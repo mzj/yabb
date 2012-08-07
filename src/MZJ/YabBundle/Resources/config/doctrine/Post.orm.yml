@@ -15,8 +15,23 @@ MZJ\YabBundle\Entity\Post:
             type: text
         created_at:
             type: datetime
+            gedmo:
+                timestampable:
+                    on: create
         updated_at:
             type: datetime
-    lifecycleCallbacks:    
-        prePersist: [ setCreatedAtValue ]
-        preUpdate:  [ setUpdatedAtValue ]
+            nullable: true
+            gedmo:
+                timestampable:
+                    on: update
+        slug:
+            type: string
+            length: 128
+            unique: true
+            gedmo:
+                slug:
+                    style: camel
+                    fields:
+                        - title
+                        - id
+    lifecycleCallbacks: { }

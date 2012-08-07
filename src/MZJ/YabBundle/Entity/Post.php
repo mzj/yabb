@@ -47,6 +47,11 @@ class Post
      */
     private $updated_at;
 
+    /**
+     * @var string $slug
+     */    
+    private $slug;
+    
 
     public function __construct() 
     {
@@ -155,20 +160,5 @@ class Post
         return $this->updated_at;
     }
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function setCreatedAtValue()
-    {
-        $this->created_at = new \DateTime('now');
-        $this->updated_at = new \DateTime('now');
-    }
 
-    /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedAtValue()
-    {
-        $this->updated_at = new \DateTime('now');
-    }
 }
