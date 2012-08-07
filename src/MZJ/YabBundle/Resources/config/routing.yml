@@ -1,7 +1,11 @@
 MZJYabBundle_post:
     resource: "@MZJYabBundle/Resources/config/routing/post.yml"
-    prefix:   /post
+    prefix:   /
+    
+MZJYabBundle_comment:
+    resource: "@MZJYabBundle/Resources/config/routing/comment.yml"
+    prefix:   /comment
         
-MZJYabBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: MZJYabBundle:Default:index }
+MZJYabBundle_home:
+    pattern:  /
+    defaults: { _controller: MZJYabBundle:Post:index }

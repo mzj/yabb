@@ -1,18 +1,22 @@
-MZJ\YabBundle\Entity\Post:
+MZJ\YabBundle\Entity\Comment:
     type: entity
     table: null
-    repositoryClass: MZJ\YabBundle\Repository\PostRepository
+    repositoryClass: MZJ\YabBundle\Entity\CommentRepository
     fields:
         id:
             type: integer
             id: true
             generator:
                 strategy: AUTO
-        title:
+        name:
             type: string
             length: 255
         content:
             type: text
+        likes:
+            type: integer
+        dislikes:
+            type: integer
         created_at:
             type: datetime
             gedmo:
@@ -24,17 +28,8 @@ MZJ\YabBundle\Entity\Post:
             gedmo:
                 timestampable:
                     on: update
-        slug:
-            type: string
-            length: 128
-            unique: true
-            gedmo:
-                slug:
-                    style: camel
-                    fields:
-                        - title
-    oneToMany:
-        comments:
-            targetEntity: Comment
-            mappedBy: post
-    lifecycleCallbacks: { }
+    manyToOne:
+        post:
+            targetEntity: Post
+            inversedBy: comments
+    lifecycleCallbacks: {  }

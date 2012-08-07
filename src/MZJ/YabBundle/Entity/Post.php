@@ -52,7 +52,12 @@ class Post
      */    
     private $slug;
     
-
+    /**
+     * @var ArrayCollection $comments
+     */    
+    private $comments;
+    
+    
     public function __construct() 
     {
         $this->created_at = new \DateTime('now');
@@ -161,4 +166,60 @@ class Post
     }
 
 
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Post
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param MZJ\YabBundle\Entity\Comment $comments
+     * @return Post
+     */
+    public function addComment(\MZJ\YabBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param MZJ\YabBundle\Entity\Comment $comments
+     */
+    public function removeComment(\MZJ\YabBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 }

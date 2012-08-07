@@ -1,0 +1,30 @@
+comment:
+    pattern:  /
+    defaults: { _controller: "MZJYabBundle:Comment:index" }
+
+comment_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "MZJYabBundle:Comment:show" }
+
+comment_new:
+    pattern:  /new
+    defaults: { _controller: "MZJYabBundle:Comment:new" }
+
+comment_create:
+    pattern:  /create
+    defaults: { _controller: "MZJYabBundle:Comment:create" }
+    requirements: { _method: post }
+
+comment_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "MZJYabBundle:Comment:edit" }
+
+comment_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "MZJYabBundle:Comment:update" }
+    requirements: { _method: post }
+
+comment_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "MZJYabBundle:Comment:delete" }
+    requirements: { _method: post }

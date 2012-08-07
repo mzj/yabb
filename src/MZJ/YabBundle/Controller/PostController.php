@@ -91,8 +91,14 @@ class PostController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('post_show', array('id' => $entity->getId())));
+            
+            return $this->redirect($this->generateUrl('post_show', 
+                    array(
+                        'created' => $entity->getCreatedAt()->format('m-d-Y'),
+                        'id' => $entity->getId(), 
+                        'slug' => $entity->getSlug()
+                    )
+                    ));
         }
 
         return $this->render('MZJYabBundle:Post:new.html.twig', array(

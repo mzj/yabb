@@ -3,9 +3,12 @@ post:
     defaults: { _controller: "MZJYabBundle:Post:index" }
 
 post_show:
-    pattern:  /{id}/show
+    pattern:  /{created}/{id}/{slug}
     defaults: { _controller: "MZJYabBundle:Post:show" }
-
+    requirements:
+        _method:  GET
+        id: \d+
+        
 post_new:
     pattern:  /new
     defaults: { _controller: "MZJYabBundle:Post:new" }

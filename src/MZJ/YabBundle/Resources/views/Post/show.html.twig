@@ -43,3 +43,10 @@
         </form>
     </li>
 </ul>
+
+
+<ul>
+    {% for comment in entity.comments %}
+        <li>{{ comment.createdAt|date('m-d-Y') }} by: {{ comment.name }} <br> {{ comment.content }} </li>
+    {% endfor %}
+</ul>
