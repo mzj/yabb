@@ -33,5 +33,4 @@ MZJ\YabBundle\Entity\Post:
                     style: camel
                     fields:
                         - title
-                        - id
     lifecycleCallbacks: { }
