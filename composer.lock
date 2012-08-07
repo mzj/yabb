@@ -1,5 +1,5 @@
 {
-    "hash": "e4e03af520c3ed978dd61d6293e6b34d",
+    "hash": "e61f0d56a36bd7058a6423ab5f86f52b",
     "packages": [
         {
             "package": "doctrine/common",
@@ -36,6 +36,12 @@
             "version": "2.3.x-dev",
             "source-reference": "17862d9a2a38bf801e564d09a26eea8503621ae0",
             "commit-date": "1343850025"
+        },
+        {
+            "package": "gedmo/doctrine-extensions",
+            "version": "dev-master",
+            "source-reference": "760896ae8c03a3c11f6f57e2644f0a6ab267b667",
+            "commit-date": "1344324734"
         },
         {
             "package": "jms/aop-bundle",
@@ -106,6 +112,12 @@
             "version": "dev-master",
             "source-reference": "d8fc1666f3cdb403f1b2d4320c45ddd6adbdf6a5",
             "commit-date": "1343980150"
+        },
+        {
+            "package": "stof/doctrine-extensions-bundle",
+            "version": "dev-master",
+            "source-reference": "f31a0861de08b6594f09430a4cbaf0618e5e11ad",
+            "commit-date": "1343029923"
         },
         {
             "package": "swiftmailer/swiftmailer",
@@ -182,6 +194,7 @@
         "sensio/distribution-bundle": 20,
         "sensio/framework-extra-bundle": 20,
         "sensio/generator-bundle": 20,
-        "doctrine/doctrine-migrations-bundle": 20
+        "doctrine/doctrine-migrations-bundle": 20,
+        "stof/doctrine-extensions-bundle": 20
     }
 }
