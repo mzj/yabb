@@ -13,14 +13,7 @@ class CategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('lft')
-            ->add('rgt')
-            ->add('lvl')
-            ->add('root')
-            ->add('parent')
-            ->add('children')
-            ->add('slug')
-            ->add('posts')
+            ->add('parent', null, array('required' => false, 'property' => 'name'))
         ;
     }
 

@@ -5,6 +5,10 @@ MZJYabBundle_post:
 MZJYabBundle_comment:
     resource: "@MZJYabBundle/Resources/config/routing/comment.yml"
     prefix:   /comment
+ 
+MZJYabBundle_category:
+    resource: "@MZJYabBundle/Resources/config/routing/category.yml"
+    prefix:   /category
         
 MZJYabBundle_home:
     pattern:  /

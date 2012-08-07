@@ -1,0 +1,30 @@
+category:
+    pattern:  /
+    defaults: { _controller: "MZJYabBundle:Category:index" }
+
+category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "MZJYabBundle:Category:show" }
+
+category_new:
+    pattern:  /new
+    defaults: { _controller: "MZJYabBundle:Category:new" }
+
+category_create:
+    pattern:  /create
+    defaults: { _controller: "MZJYabBundle:Category:create" }
+    requirements: { _method: post }
+
+category_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "MZJYabBundle:Category:edit" }
+
+category_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "MZJYabBundle:Category:update" }
+    requirements: { _method: post }
+
+category_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "MZJYabBundle:Category:delete" }
+    requirements: { _method: post }

@@ -260,4 +260,18 @@ class Post
     {
         return $this->categories;
     }
+    
+    /**
+     * Add categories
+     *
+     * @param MZJ\YabBundle\Entity\Category $categories
+     * @return Post
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    
+        return $this;
+    }
+
 }
