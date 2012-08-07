@@ -1,0 +1,7 @@
+MZJYabBundle_post:
+    resource: "@MZJYabBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+        
+MZJYabBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: MZJYabBundle:Default:index }

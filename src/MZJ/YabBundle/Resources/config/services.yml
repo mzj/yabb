@@ -1,0 +1,7 @@
+parameters:
+#    mzj_yab.example.class: MZJ\YabBundle\Example
+
+services:
+#    mzj_yab.example:
+#        class: %mzj_yab.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

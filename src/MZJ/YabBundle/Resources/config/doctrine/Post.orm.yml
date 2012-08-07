@@ -1,0 +1,22 @@
+MZJ\YabBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: MZJ\YabBundle\Repository\PostRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        title:
+            type: string
+            length: 255
+        content:
+            type: text
+        created_at:
+            type: datetime
+        updated_at:
+            type: datetime
+    lifecycleCallbacks:    
+        prePersist: [ setCreatedAtValue ]
+        preUpdate:  [ setUpdatedAtValue ]
