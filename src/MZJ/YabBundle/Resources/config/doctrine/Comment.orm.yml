@@ -1,7 +1,7 @@
 MZJ\YabBundle\Entity\Comment:
     type: entity
-    table: null
-    repositoryClass: MZJ\YabBundle\Entity\CommentRepository
+    table: comment
+    repositoryClass: MZJ\YabBundle\Repository\CommentRepository
     fields:
         id:
             type: integer

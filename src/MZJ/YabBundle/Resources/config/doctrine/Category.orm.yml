@@ -1,0 +1,64 @@
+MZJ\YabBundle\Entity\Category:
+    type: entity
+    table: category
+    gedmo:
+        tree:
+           type: nested
+    repositoryClass: MZJ\YabBundle\Repository\CategoryRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+        lft:
+            type: integer
+            gedmo:
+              - treeLeft
+        rgt:
+            type: integer
+            gedmo:
+              - treeRight
+        lvl:
+            type: integer
+            gedmo:
+              - treeLevel
+        root:
+            type: integer
+            gedmo:
+              - treeRoot
+        slug:
+            type: string
+            length: 128
+            unique: true
+            gedmo:
+                slug:
+                    style: camel
+                    fields:
+                        - name
+    manyToOne:
+        parent:
+           targetEntity: MZJ\YabBundle\Entity\Category
+           inversedBy: children
+           joinColumn:
+               name: parent_id
+               referencedColumnName: id
+               onDelete: SET NULL
+           gedmo:
+               - treeParent
+    oneToMany:
+        children:
+            targetEntity: MZJ\YabBundle\Entity\Category
+            mappedBy: parent
+            orderBy:
+                lft: ASC
+    manyToMany:
+        posts:
+          targetEntity: Post
+          mappedBy: categories
+    lifecycleCallbacks: {  }

@@ -1,6 +1,6 @@
 MZJ\YabBundle\Entity\Post:
     type: entity
-    table: null
+    table: post
     repositoryClass: MZJ\YabBundle\Repository\PostRepository
     fields:
         id:
@@ -37,4 +37,8 @@ MZJ\YabBundle\Entity\Post:
         comments:
             targetEntity: Comment
             mappedBy: post
+    manyToMany:
+        categories:
+          targetEntity: Category
+          inversedBy: posts
     lifecycleCallbacks: { }

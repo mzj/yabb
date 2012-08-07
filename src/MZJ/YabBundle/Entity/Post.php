@@ -222,4 +222,42 @@ class Post
     {
         return $this->comments;
     }
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $categories;
+
+
+    /**
+     * Add categories
+     *
+     * @param MZJ\YabBundle\Entity\Category $categories
+     * @return Post
+     */
+    public function addCategorie(\MZJ\YabBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+    
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param MZJ\YabBundle\Entity\Category $categories
+     */
+    public function removeCategorie(\MZJ\YabBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
 }
