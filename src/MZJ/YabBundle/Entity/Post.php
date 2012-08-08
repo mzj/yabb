@@ -104,7 +104,7 @@ class Post implements Taggable
      */
     public function getTaggableType()
     {
-        return 'Post';
+        return 'post_tag';
     }
 
     /**

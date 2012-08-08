@@ -87,17 +87,21 @@ class PostController extends Controller
      */
     public function createAction(Request $request)
     {
+        $data = $request->request->get('mzj_yabbundle_posttype');
+        $tagsStr = $data['tags'];
+        
         $entity  = new Post();
+        
         $tagManager = $this->get('fpn_tag.tag_manager');
-        // ask the tag manager to create a Tag object
-        $postTag = $tagManager->loadOrCreateTag('post');
+        
+        $tags = $tagManager->loadOrCreateTags($tagManager->splitTagNames($tagsStr));
 
         // assign the foo tag to the post
-        $tagManager->addTag($postTag, $entity);
+        $tagManager->addTags($tags, $entity);
         
         $form = $this->createForm(new PostType(), $entity);
         $form->bind($request);
-
+        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);

@@ -16,7 +16,9 @@ class PostType extends AbstractType
             ->add('created_at')
             ->add('enabled', null, array('required' => false))
             ->add('commentsEnabled', null, array('required' => false))
-            ->add('categories');
+            ->add('categories')
+            ->add('tags', 'hidden', array('property_path' => false))
+         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
