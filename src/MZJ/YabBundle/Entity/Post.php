@@ -67,6 +67,16 @@ class Post
      */    
     private $tags;  
     
+    /**
+     * @var boolean $enabled
+     */    
+    private $enabled = true;     
+    
+    /**
+     * @var boolean $commentsEnabled
+     */    
+    private $commentsEnabled = false; 
+    
     
     public function __construct() 
     {
@@ -323,5 +333,45 @@ class Post
     public function getTags()
     {
         return $this->tags;
+    }
+    
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+    
+    /**
+     * Set enabled
+     *
+     * @return boolean
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+    }
+    
+    /**
+     * Get commentsEnabled
+     *
+     * @return boolean
+     */
+    public function getCommentsEnabled()
+    {
+        return $this->commentsEnabled;
+    }
+    
+    /**
+     * Set commentsEnabled
+     *
+     * @return boolean
+     */
+    public function setCommentsEnabled($commentsEnabled)
+    {
+        $this->commentsEnabled = $commentsEnabled;
     }
 }

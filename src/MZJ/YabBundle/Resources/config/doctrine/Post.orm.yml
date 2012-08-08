@@ -33,6 +33,10 @@ MZJ\YabBundle\Entity\Post:
                     style: camel
                     fields:
                         - title
+        enabled:
+            type: boolean
+        commentsEnabled:
+            type: boolean 
     oneToMany:
         comments:
             targetEntity: Comment

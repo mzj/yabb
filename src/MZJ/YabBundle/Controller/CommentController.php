@@ -168,7 +168,54 @@ class CommentController extends Controller
 
         return $this->redirect($this->generateUrl('comment'));
     }
+    
+    /**
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param type $id
+     * @throws type
+     */
+    public function likeAction(Request $request, $id) 
+    {
+        $em = $this->getDoctrine()->getManager();
 
+        $entity = $em->getRepository('MZJYabBundle:Comment')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Comment entity.');
+        }
+        $likes = $entity->getLikes() + 1;
+        $entity->setLikes($likes);
+        $em->persist($entity);
+        $em->flush();
+    }
+    
+    /**
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param type $id
+     * @throws type
+     */
+    public function dislikeAction(Request $request, $id) 
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('MZJYabBundle:Comment')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Comment entity.');
+        }
+        $dislikes = $entity->getLikes() - 1;
+        $entity->setLikes($dislikes);
+        $em->persist($entity);
+        $em->flush();
+    }
+    
+    /**
+     * 
+     * @param type $id
+     * @return type
+     */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))

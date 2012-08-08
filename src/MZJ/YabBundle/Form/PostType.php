@@ -14,8 +14,10 @@ class PostType extends AbstractType
             ->add('title')
             ->add('content')
             ->add('created_at')
-            ->add('categories', null, array('property' => 'indentedName'))
-            ->add('tags', null, array('property' => 'name', 'expanded' => true))
+            ->add('enabled')
+            ->add('commentsEnabled')
+            ->add('categories')
+            ->add('tags')
         ;
     }
 
