@@ -15,6 +15,14 @@
             <td>{{ entity.content }}</td>
         </tr>
         <tr>
+            <th>Categories</th>
+            <td>{% for category in entity.categories %}{{ category }}, {% endfor %}</td>
+        </tr>
+        <tr>
+            <th>Tags</th>
+            <td>{% for tag in entity.tags %}{{ tag }}, {% endfor %}</td>
+        </tr>
+        <tr>
             <th>Created_at</th>
             <td>{{ entity.createdat|date('Y-m-d H:i:s') }}</td>
         </tr>

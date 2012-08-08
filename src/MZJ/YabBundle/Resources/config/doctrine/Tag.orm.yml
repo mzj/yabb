@@ -1,0 +1,18 @@
+MZJ\YabBundle\Entity\Tag:
+    type: entity
+    table: tag
+    repositoryClass: MZJ\YabBundle\Repository\TagRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        name:
+            type: string
+            length: '50'
+    manyToMany:
+        posts:
+          targetEntity: Post
+          mappedBy: tags
+    lifecycleCallbacks: {  }

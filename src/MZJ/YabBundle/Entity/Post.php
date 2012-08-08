@@ -57,6 +57,16 @@ class Post
      */    
     private $comments;
     
+    /**
+     * @var ArrayCollection $categories
+     */    
+    private $categories;    
+    
+    /**
+     * @var ArrayCollection $categories
+     */    
+    private $tags;  
+    
     
     public function __construct() 
     {
@@ -222,11 +232,6 @@ class Post
     {
         return $this->comments;
     }
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
-    private $categories;
-
 
     /**
      * Add categories
@@ -273,5 +278,50 @@ class Post
     
         return $this;
     }
+    
+    /**
+     * Add categories
+     *
+     * @param MZJ\YabBundle\Entity\Tag $tags
+     * @return Post
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    
+        return $this;
+    }
 
+    /**
+     * Add tags
+     *
+     * @param MZJ\YabBundle\Entity\Tag $tags
+     * @return Post
+     */
+    public function addTag(\MZJ\YabBundle\Entity\Tag $tags)
+    {
+        $this->tags[] = $tags;
+    
+        return $this;
+    }
+
+    /**
+     * Remove tags
+     *
+     * @param MZJ\YabBundle\Entity\Tag $tags
+     */
+    public function removeTag(\MZJ\YabBundle\Entity\Tag $tags)
+    {
+        $this->tags->removeElement($tags);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }

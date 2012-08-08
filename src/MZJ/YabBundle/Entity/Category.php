@@ -45,12 +45,12 @@ class Category
     private $root;
 
     /**
-     * @var \stdClass $parent
+     * @var Category $parent
      */
     private $parent;
 
     /**
-     * @var \stdClass $children
+     * @var ArrayCollection $children
      */
     private $children;
 
@@ -60,7 +60,7 @@ class Category
     private $slug;
 
     /**
-     * @var \stdClass $posts
+     * @var ArrayCollection $posts
      */
     private $posts;
 
@@ -73,6 +73,15 @@ class Category
     public function getId()
     {
         return $this->id;
+    }
+    
+    /**
+     * 
+     */
+    public function getIndentedName() 
+    {
+        $indent = str_repeat(' |— ', $this->lvl);
+        return $indent . $this->name;
     }
 
     /**
@@ -357,5 +366,26 @@ class Category
     public function removePost(\MZJ\YabBundle\Entity\Post $posts)
     {
         $this->posts->removeElement($posts);
+    }
+
+    /**
+     * Add children
+     *
+     * @param MZJ\YabBundle\Entity\Category $children
+     * @return Category
+     */
+    public function addChildren(\MZJ\YabBundle\Entity\Category $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function __toString() 
+    {
+        return $this->name;
     }
 }

@@ -57,6 +57,16 @@ class Post
      */    
     private $comments;
     
+    /**
+     * @var ArrayCollection $categories
+     */    
+    private $categories;    
+    
+    /**
+     * @var ArrayCollection $categories
+     */    
+    private $tags;  
+    
     
     public function __construct() 
     {
@@ -222,4 +232,51 @@ class Post
     {
         return $this->comments;
     }
+
+    /**
+     * Add categories
+     *
+     * @param MZJ\YabBundle\Entity\Category $categories
+     * @return Post
+     */
+    public function addCategorie(\MZJ\YabBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+    
+        return $this;
+    }
+
+    /**
+     * Remove categories
+     *
+     * @param MZJ\YabBundle\Entity\Category $categories
+     */
+    public function removeCategorie(\MZJ\YabBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+    
+    /**
+     * Add categories
+     *
+     * @param MZJ\YabBundle\Entity\Category $categories
+     * @return Post
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+    
+        return $this;
+    }
+
 }

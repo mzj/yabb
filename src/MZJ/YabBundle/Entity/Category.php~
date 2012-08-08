@@ -45,12 +45,12 @@ class Category
     private $root;
 
     /**
-     * @var \stdClass $parent
+     * @var Category $parent
      */
     private $parent;
 
     /**
-     * @var \stdClass $children
+     * @var ArrayCollection $children
      */
     private $children;
 
@@ -60,7 +60,7 @@ class Category
     private $slug;
 
     /**
-     * @var \stdClass $posts
+     * @var ArrayCollection $posts
      */
     private $posts;
 
@@ -219,7 +219,7 @@ class Category
      * @param \stdClass $parent
      * @return Category
      */
-    public function setParent($parent)
+    public function setParent(\MZJ\YabBundle\Entity\Category $parent)
     {
         $this->parent = $parent;
     
@@ -303,5 +303,72 @@ class Category
     public function getPosts()
     {
         return $this->posts;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->posts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add children
+     *
+     * @param Entity\Category $children
+     * @return Category
+     */
+    public function addCategory(\MZJ\YabBundle\Entity\Category $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param Entity\Category $children
+     */
+    public function removeChildren(Category $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Add posts
+     *
+     * @param MZJ\YabBundle\Entity\Post $posts
+     * @return Category
+     */
+    public function addPost(\MZJ\YabBundle\Entity\Post $posts)
+    {
+        $this->posts[] = $posts;
+    
+        return $this;
+    }
+
+    /**
+     * Remove posts
+     *
+     * @param MZJ\YabBundle\Entity\Post $posts
+     */
+    public function removePost(\MZJ\YabBundle\Entity\Post $posts)
+    {
+        $this->posts->removeElement($posts);
+    }
+
+    /**
+     * Add children
+     *
+     * @param MZJ\YabBundle\Entity\Category $children
+     * @return Category
+     */
+    public function addChildren(\MZJ\YabBundle\Entity\Category $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
     }
 }

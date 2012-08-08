@@ -6,28 +6,24 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PostType extends AbstractType
+class TagType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('content')
-            ->add('created_at')
-            ->add('categories', null, array('property' => 'indentedName'))
-            ->add('tags', null, array('property' => 'name', 'expanded' => true))
+            ->add('name')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MZJ\YabBundle\Entity\Post'
+            'data_class' => 'MZJ\YabBundle\Entity\Tag'
         ));
     }
 
     public function getName()
     {
-        return 'mzj_yabbundle_posttype';
+        return 'mzj_yabbundle_tagtype';
     }
 }
