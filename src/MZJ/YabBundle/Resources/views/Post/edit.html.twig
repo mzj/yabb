@@ -1,6 +1,34 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+
+<link rel="stylesheet" href="{{ asset('bundles/mzjyab/js/vendor/tag-it/css/jquery.tagit.css') }}" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ asset('bundles/mzjyab/js/vendor/tag-it/js/tag-it.js') }}" ></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        $("#mzj_yabbundle_posttype_tags").tagit();
+        //console.log($("#mytags"));
+        // Fixes tagit bug
+        /*var num = ($("#mytags li").length - 1) / 2;
+        $('li:lt(' + num + ')', '#mytags').remove();*/
+    });
+</script>
+
 <h1>Post edit</h1>
 
 <form action="{{ path('post_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+  
+    {% set value = '' %}
+    
+    {% for tag in entity.tags %}
+        {% set value = value ~ tag ~ ',' %}
+    {% endfor %}
+    
+    
+    {{ form_widget(edit_form.tags, { 'attr': {'value': value} }) }}
     {{ form_widget(edit_form) }}
     <p>
         <button type="submit">Edit</button>
@@ -20,3 +48,6 @@
         </form>
     </li>
 </ul>
+
+
+

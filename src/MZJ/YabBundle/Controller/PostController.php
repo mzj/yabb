@@ -138,6 +138,9 @@ class PostController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Post entity.');
         }
+        
+        $tagManager = $this->get('fpn_tag.tag_manager');
+        $tagManager->loadTagging($entity);
 
         $editForm = $this->createForm(new PostType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
@@ -157,20 +160,33 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $data = $request->request->get('mzj_yabbundle_posttype');
+        $tagsStr = $data['tags'];
+        
         $entity = $em->getRepository('MZJYabBundle:Post')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Post entity.');
         }
-
+        
+        $tagManager = $this->get('fpn_tag.tag_manager');
+        
+        $tags = $tagManager->loadOrCreateTags($tagManager->splitTagNames($tagsStr));
+        
+        $tagManager->replaceTags($tags, $entity);
+        
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new PostType(), $entity);
         $editForm->bind($request);
 
+        
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
+            // after flushing the post, tell the tag manager to actually save the tags
+            $tagManager->saveTagging($entity);
+            
             return $this->redirect($this->generateUrl('post_edit', array('id' => $id)));
         }
 
