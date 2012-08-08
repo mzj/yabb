@@ -28,6 +28,21 @@ class TagController extends Controller
             'entities' => $entities,
         ));
     }
+    
+    /**
+     * Lists all Tag entities.
+     *
+     */
+    public function cloudAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('MZJYabBundle:Tag')->findAll();
+
+        return $this->render('MZJYabBundle:Tag:cloud.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
 
     /**
      * Finds and displays a Tag entity.

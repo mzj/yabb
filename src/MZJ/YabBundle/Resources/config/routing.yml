@@ -1,6 +1,6 @@
 MZJYabBundle_post:
     resource: "@MZJYabBundle/Resources/config/routing/post.yml"
-    prefix:   /
+    prefix:   /post
     
 MZJYabBundle_comment:
     resource: "@MZJYabBundle/Resources/config/routing/comment.yml"
@@ -16,4 +16,4 @@ MZJYabBundle_tag:
         
 MZJYabBundle_home:
     pattern:  /
-    defaults: { _controller: MZJYabBundle:Post:index }
+    defaults: { _controller: MZJYabBundle:Blog:index }

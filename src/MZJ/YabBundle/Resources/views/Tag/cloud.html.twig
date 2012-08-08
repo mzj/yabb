@@ -1,0 +1,6 @@
+<div>
+    <h1>Tag Cloud</h1>
+    {% for entity in entities %}
+        <a href="{{ path('tag_show', { 'id': entity.id }) }}">{{ entity.name }}</a>
+    {% endfor %}
+<div>

@@ -17,8 +17,13 @@ class PostType extends AbstractType
             ->add('enabled', null, array('required' => false))
             ->add('commentsEnabled', null, array('required' => false))
             ->add('categories')
-            ->add('tags')
-        ;
+            ->add('tags', 'collection', array(
+                    'by_reference' => false,
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'prototype' => true,
+                    'type' => new TagType()
+        ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

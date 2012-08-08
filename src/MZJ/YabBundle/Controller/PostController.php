@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use MZJ\YabBundle\Entity\Post;
+use MZJ\YabBundle\Entity\Tag;
 use MZJ\YabBundle\Form\PostType;
 
 /**
@@ -70,7 +71,17 @@ class PostController extends Controller
     {
         $entity = new Post();
         $form   = $this->createForm(new PostType(), $entity);
-
+        
+        // dummy code - this is here just so that the Task has some tags
+        // otherwise, this isn't an interesting example
+        $tag1 = new Tag();
+        $tag1->setName('tag1');
+        $entity->addTag($tag1);
+        $tag2 = new Tag();
+        $tag2->setName('tag2');
+        $entity->addTag($tag2);
+        // end dummy code
+        
         return $this->render('MZJYabBundle:Post:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),

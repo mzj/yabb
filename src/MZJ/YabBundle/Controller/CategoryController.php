@@ -30,6 +30,21 @@ class CategoryController extends Controller
     }
 
     /**
+     * Lists all Category entities.
+     *
+     */
+    public function sidebarAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('MZJYabBundle:Category')->findAll();
+
+        return $this->render('MZJYabBundle:Category:sidebar.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    
+    /**
      * Finds and displays a Category entity.
      *
      */
@@ -50,6 +65,7 @@ class CategoryController extends Controller
             'delete_form' => $deleteForm->createView(),        ));
     }
 
+    
     /**
      * Displays a form to create a new Category entity.
      *

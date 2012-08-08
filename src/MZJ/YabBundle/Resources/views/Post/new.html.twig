@@ -1,7 +1,80 @@
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    function add() {
+        var collectionHolder = $('#estore_shopbundle_producttype_garments');
+        var prototype = collectionHolder.attr('data-prototype');
+        form = prototype.replace(/\$\$name\$\$/g, collectionHolder.children().length);
+        collectionHolder.append(form);
+    }
+
+    function deleteGarment(event) {
+        var collectionHolder = $('#estore_shopbundle_producttype_garments');
+        $(event).parent().remove();
+        console.log(event);
+    }
+    
+    $('a.jslink').live('click', function(event){
+        event.preventDefault();
+        add();
+    });
+    
+   $('a.delete-garment').live('click', function(event){
+        event.preventDefault();
+        
+        deleteGarment(this);
+    });
+    </script>
+
 <h1>Post creation</h1>
 
 <form action="{{ path('post_create') }}" method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
+    {{ form_row(form.title) }}
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <h1>Tags</h1>
+            
+    <ul id="estore_shopbundle_producttype_garments" data-prototype="{{ form_widget(form.tags.get('prototype')) | e }}">
+        {# iterate over each existing tag and render its only field: name #}
+        {% for index, tag in form.tags %}
+            <fieldset style="border:1px solid #CCC; border-radius: 5px; padding: 10px; margin: 10px; margin-left: -140px;">
+                <legend class="title">Tag No. #{{ index + 1 }}</legend>
+                    {{ form_row(tag.name) }}
+            <a href="#" class="delete-garment">Delete tag</a>
+            </fieldset>
+        {% endfor %}
+    </ul>
+    
+    <ul class="record_actions">
+        <li>
+            <a href="#" class="jslink">
+                Add a tag
+            </a>
+        </li>
+    </ul>        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            {{ form_rest(form) }}
     <p>
         <button type="submit">Create</button>
     </p>

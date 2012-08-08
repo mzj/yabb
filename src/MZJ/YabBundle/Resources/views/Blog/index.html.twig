@@ -1,0 +1,17 @@
+<h1>Post list</h1>
+
+<section>
+    {% for entity in entities %}
+        <article>
+            <h2><a href="{{ path('post_show', { 'created': entity.createdAt|date("m-d-Y"), 'id': entity.id, 'slug': entity.slug }) }}">{{ entity.title }}</a></h2>
+            
+            <td>{{ entity.content }}</td>
+            <td>{% if entity.createdat %}{{ entity.createdat|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.updatedat %}{{ entity.updatedat|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </article>
+    {% endfor %}
+</section>
+
+{% render "MZJYabBundle:Category:sidebar" %}
+
+{% render "MZJYabBundle:Tag:cloud" %}

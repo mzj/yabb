@@ -48,4 +48,5 @@ MZJ\YabBundle\Entity\Post:
         tags:
           targetEntity: Tag
           inversedBy: posts
+          cascade: [persist]
     lifecycleCallbacks: { }
