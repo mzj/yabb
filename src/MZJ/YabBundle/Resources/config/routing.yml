@@ -10,9 +10,6 @@ MZJYabBundle_category:
     resource: "@MZJYabBundle/Resources/config/routing/category.yml"
     prefix:   /category
 
-MZJYabBundle_tag:
-        resource: "@MZJYabBundle/Resources/config/routing/tag.yml"
-        prefix:   /tag
         
 MZJYabBundle_home:
     pattern:  /

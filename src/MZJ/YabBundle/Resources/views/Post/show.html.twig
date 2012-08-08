@@ -1,3 +1,6 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
 <h1>Post</h1>
 
 <table class="record_properties">
@@ -20,7 +23,7 @@
         </tr>
         <tr>
             <th>Tags</th>
-            <td>{% for tag in entity.tags %}{{ tag }}, {% endfor %}</td>
+            <td>{% for tag in entity.tags %} {{ tag }}, {% endfor %}</td>
         </tr>
         <tr>
             <th>Created_at</th>
@@ -58,3 +61,5 @@
         <li>{{ comment.createdAt|date('m-d-Y') }} by: {{ comment.name }} <br> {{ comment.content }} </li>
     {% endfor %}
 </ul>
+
+{% endblock %}

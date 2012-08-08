@@ -11,7 +11,8 @@
 
 namespace MZJ\YabBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use DoctrineExtensions\Taggable\Taggable;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * MZJ\YabBundle\Entity\Post
@@ -20,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @author Marko Jovanovic <markozjovanovic@gmail.com>
  */
-class Post
+class Post implements Taggable
 {
     /**
      * @var integer $id
@@ -62,10 +63,6 @@ class Post
      */    
     private $categories;    
     
-    /**
-     * @var ArrayCollection $categories
-     */    
-    private $tags;  
     
     /**
      * @var boolean $enabled
@@ -77,10 +74,46 @@ class Post
      */    
     private $commentsEnabled = false; 
     
+    /**
+     * 
+     */
+    private $tags;
     
+    /**
+     * 
+     */
     public function __construct() 
     {
         $this->created_at = new \DateTime('now');
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getTags()
+    {
+        $this->tags = $this->tags ?: new ArrayCollection();
+
+        return $this->tags;
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    public function getTaggableType()
+    {
+        return 'Post';
+    }
+
+    /**
+     * 
+     * @return type
+     */
+    public function getTaggableId()
+    {
+        return $this->getId();
     }
     
     /**
@@ -289,52 +322,7 @@ class Post
         return $this;
     }
     
-    /**
-     * Add categories
-     *
-     * @param MZJ\YabBundle\Entity\Tag $tags
-     * @return Post
-     */
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-    
-        return $this;
-    }
-
-    /**
-     * Add tags
-     *
-     * @param MZJ\YabBundle\Entity\Tag $tags
-     * @return Post
-     */
-    public function addTag(\MZJ\YabBundle\Entity\Tag $tags)
-    {
-        $this->tags[] = $tags;
-    
-        return $this;
-    }
-
-    /**
-     * Remove tags
-     *
-     * @param MZJ\YabBundle\Entity\Tag $tags
-     */
-    public function removeTag(\MZJ\YabBundle\Entity\Tag $tags)
-    {
-        $this->tags->removeElement($tags);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-    
+ 
     /**
      * Get enabled
      *

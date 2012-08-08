@@ -1,5 +1,5 @@
 {
-    "hash": "e61f0d56a36bd7058a6423ab5f86f52b",
+    "hash": "e4f21dccdf565a61ff209c691ef0b9bf",
     "packages": [
         {
             "package": "doctrine/common",
@@ -36,6 +36,18 @@
             "version": "2.3.x-dev",
             "source-reference": "17862d9a2a38bf801e564d09a26eea8503621ae0",
             "commit-date": "1343850025"
+        },
+        {
+            "package": "fpn/doctrine-extensions-taggable",
+            "version": "dev-master",
+            "source-reference": "dac30481631608f8f0d0bb5ac88896b3efcb5f3b",
+            "commit-date": "1340829852"
+        },
+        {
+            "package": "fpn/tag-bundle",
+            "version": "dev-master",
+            "source-reference": "05518c2ccaf059414cfed51c0bbbfabd34fe44ea",
+            "commit-date": "1342458932"
         },
         {
             "package": "gedmo/doctrine-extensions",
@@ -134,8 +146,14 @@
         {
             "package": "symfony/assetic-bundle",
             "version": "dev-master",
-            "source-reference": "0c09207be07b044e06d28a4111f554f071e5b658",
-            "commit-date": "1343812720"
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/assetic-bundle",
+            "version": "dev-master",
+            "source-reference": "23220f745218e7b2d0efcffd579d1dab3d825602",
+            "commit-date": "1344283756"
         },
         {
             "package": "symfony/monolog-bundle",
@@ -195,6 +213,7 @@
         "sensio/framework-extra-bundle": 20,
         "sensio/generator-bundle": 20,
         "doctrine/doctrine-migrations-bundle": 20,
-        "stof/doctrine-extensions-bundle": 20
+        "stof/doctrine-extensions-bundle": 20,
+        "fpn/tag-bundle": 20
     }
 }

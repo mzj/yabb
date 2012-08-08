@@ -49,7 +49,8 @@ class PostController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
+        $tagManager = $this->get('fpn_tag.tag_manager');
+        
         $entity = $em->getRepository('MZJYabBundle:Post')->find($id);
 
         if (!$entity) {
@@ -57,7 +58,9 @@ class PostController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
+        
+        $tagManager->loadTagging($entity);
+        
         return $this->render('MZJYabBundle:Post:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
@@ -72,16 +75,6 @@ class PostController extends Controller
         $entity = new Post();
         $form   = $this->createForm(new PostType(), $entity);
         
-        // dummy code - this is here just so that the Task has some tags
-        // otherwise, this isn't an interesting example
-        $tag1 = new Tag();
-        $tag1->setName('tag1');
-        $entity->addTag($tag1);
-        $tag2 = new Tag();
-        $tag2->setName('tag2');
-        $entity->addTag($tag2);
-        // end dummy code
-        
         return $this->render('MZJYabBundle:Post:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
@@ -95,6 +88,13 @@ class PostController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Post();
+        $tagManager = $this->get('fpn_tag.tag_manager');
+        // ask the tag manager to create a Tag object
+        $postTag = $tagManager->loadOrCreateTag('post');
+
+        // assign the foo tag to the post
+        $tagManager->addTag($postTag, $entity);
+        
         $form = $this->createForm(new PostType(), $entity);
         $form->bind($request);
 
@@ -102,6 +102,9 @@ class PostController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+            
+            // after flushing the post, tell the tag manager to actually save the tags
+            $tagManager->saveTagging($entity);
             
             return $this->redirect($this->generateUrl('post_show', 
                     array(

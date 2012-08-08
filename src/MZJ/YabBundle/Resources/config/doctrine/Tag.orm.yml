@@ -1,18 +1,16 @@
 MZJ\YabBundle\Entity\Tag:
     type: entity
     table: tag
-    repositoryClass: MZJ\YabBundle\Repository\TagRepository
+    repositoryClass: FPN\DoctrineExtensions\Taggable\Entity\TagRepository
     fields:
         id:
             type: integer
             id: true
             generator:
                 strategy: AUTO
-        name:
-            type: string
-            length: '50'
-    manyToMany:
-        posts:
-          targetEntity: Post
-          mappedBy: tags
-    lifecycleCallbacks: {  }
+    oneToMany:
+        tagging:
+            targetEntity: Tagging
+            mappedBy: tag
+            fetch: EAGER
+    lifecycleCallbacks: { }

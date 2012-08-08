@@ -1,0 +1,20 @@
+MZJ\YabBundle\Entity\Tagging:
+    type: entity
+    table: tagging
+    repositoryClass: MZJ\YabBundle\Repository\TaggingRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        tag:
+            targetEntity: Tag
+            joinColumns:
+                tag_id:
+                    referencedColumnName: id
+    uniqueConstraints:
+        tagging_idx:
+            columns: tag_id,resource_type,resource_id
+    lifecycleCallbacks: { }
