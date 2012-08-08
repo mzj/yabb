@@ -1,0 +1,5 @@
+<nav id="cloud">
+    {% for tag, count in tags %}
+        <span class="cloud-count-{{ count }}">{{ tag }} </span>
+    {% endfor %}
+</nav>

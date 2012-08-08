@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent () }}
+    {% stylesheets  filter='cssrewrite' debug=false
+            'bundles/mzjyab/css/style.css'
+            
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" media="screen" />
+    {% endstylesheets %}  
+{% endblock stylesheets %}    
+
+{% block body %}
+        
+    <header><h1>Yet Another Blog</h1></header>
+    
+    <div id="container" class="center">
+        <div id="main">
+            {% block main %}
+            {% endblock main %}
+        </div> 
+        
+        <aside id="sidebar">
+            {% block sidebar %}
+                {% render "MZJYabBundle:Category:sidebar" %}
+            {% endblock sidebar %}
+
+           {% block cloud %}     
+                {% render "MZJYabBundle:Tag:cloud" %}
+           {% endblock cloud %}
+       </aside>     
+    <!-- end #container -->        
+    <div>
+        
+    <footer>Copyleft 2012 - Marko Jovanovic</footer>
+    
+{% endblock body %}

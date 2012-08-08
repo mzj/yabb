@@ -80,6 +80,12 @@ class Post implements Taggable
     private $tags;
     
     /**
+     *
+     * @var string 
+     */
+    private $abstract;
+    
+    /**
      * 
      */
     public function __construct() 
@@ -361,5 +367,23 @@ class Post implements Taggable
     public function setCommentsEnabled($commentsEnabled)
     {
         $this->commentsEnabled = $commentsEnabled;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getAbstract()
+    {
+        return $this->abstract;
+    }
+    
+    /**
+     * 
+     * @param type $abstract
+     */
+    public function setAbstract($abstract)
+    {
+        $this->abstract = $abstract;
     }
 }

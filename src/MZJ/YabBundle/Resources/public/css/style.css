@@ -1,0 +1,59 @@
+/* 
+    Document   : style.css
+    Created on : 08.08.2012., 20.58.24
+    Author     : Marko
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+* { 
+   margin: 0px;
+   padding: 0px;
+}
+
+.clear {
+    clear: both;
+}
+
+.center {
+    margin: auto;
+}
+
+header {
+    height: 50px;
+    background: #EFEFEF;
+}
+
+#container {
+    width: 960px;
+}
+
+#main {
+    float: left;
+}
+
+#sidebar {
+    float: right;
+}
+
+#cloud {
+    width: 200px;
+}
+
+footer {
+    clear: both;
+}
+
+.cloud-count-1 {
+    font-size: 1em;
+}
+.cloud-count-2 {
+    font-size: 1.5em;
+}
+.cloud-count-3 {
+    font-size: 2em;
+}
+.cloud-count-4 {
+    font-size: 3em;
+}
+

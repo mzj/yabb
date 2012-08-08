@@ -13,6 +13,7 @@ class PostType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
+            ->add('abstract')
             ->add('created_at')
             ->add('enabled', null, array('required' => false))
             ->add('commentsEnabled', null, array('required' => false))

@@ -1,7 +1,7 @@
 MZJ\YabBundle\Entity\Tag:
     type: entity
     table: tag
-    repositoryClass: FPN\DoctrineExtensions\Taggable\Entity\TagRepository
+    repositoryClass: DoctrineExtensions\Taggable\Entity\TagRepository
     fields:
         id:
             type: integer
