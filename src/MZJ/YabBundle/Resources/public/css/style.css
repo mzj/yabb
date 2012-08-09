@@ -30,10 +30,15 @@ header {
 
 #main {
     float: left;
+    width: 60%;
 }
 
 #sidebar {
     float: right;
+}
+
+.short-post {
+    margin-top: 50px;
 }
 
 #cloud {
