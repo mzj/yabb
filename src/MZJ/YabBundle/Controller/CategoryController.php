@@ -36,14 +36,33 @@ class CategoryController extends Controller
     public function sidebarAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('MZJYabBundle:Category')->findAll();
-
+        
+        $repo = $em->getRepository('MZJYabBundle:Category');
+        
+        $categories = $repo->getArrWithoutRoot();
+       // exit(var_dump($categories));
         return $this->render('MZJYabBundle:Category:sidebar.html.twig', array(
-            'entities' => $entities,
+            'categories' => $categories,
         ));
     }
     
+    /**
+     * 
+     * @param type $id
+     */
+    public function upAction($id) 
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $repo = $em->getRepository('MZJYabBundle:Category'); 
+        $cat = $repo->find($id);
+        if($repo->moveUp($cat, 1)) { 
+            exit("ok");            
+        }
+        $em->clear();
+        return $this->redirect($this->generateUrl('MZJYabBundle_home'));
+    }
+
     /**
      * Finds and displays a Category entity.
      *

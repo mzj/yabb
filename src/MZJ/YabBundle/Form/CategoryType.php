@@ -13,8 +13,17 @@ class CategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('parent', null, array('required' => false, 'property' => 'name'))
-        ;
+            ->add('parent', 'entity',  
+                        array(
+                            'property' => 'indentedName',
+                            'class' => 'MZJYabBundle:Category',
+                            'query_builder' => function($er)
+                                {
+                                    return $er->createQueryBuilder('c')->orderBy('c.lft', 'ASC');
+                                },
+                             'multiple' => false
+                        ))
+            ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

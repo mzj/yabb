@@ -3,10 +3,10 @@
 
     <nav>
         <ul>
-            {% for entity in entities %}
-                <li>
-                   <a href="{{ path('category_show', { 'id': entity.id }) }}">{{ entity.indentedName }}</a>
-                </li>
+            {% for category in categories %}
+                {{ ' |— '|repeat(category.lvl - 1) }}{{ category.name }}<br>
+            {% else %}
+                There are no categories
             {% endfor %}
         </ul>
     </nav>

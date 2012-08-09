@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+    const NO_PARENT = '-- Without parent --';
+    
     /**
      * @var integer $id
      */
@@ -64,7 +66,12 @@ class Category
      */
     private $posts;
 
-
+    /**
+     *
+     * @var type 
+     */
+    private $indentedName;
+    
     /**
      * Get id
      *
@@ -76,14 +83,16 @@ class Category
     }
     
     /**
-     * 
+     * Indents the name of a category depending on level
      */
-    public function getIndentedName() 
+    public function getIndentedName()
     {
-        $indent = str_repeat(' |— ', $this->lvl);
-        return $indent . $this->name;
+        $indent = ($this->lvl >= 1) ? $this->lvl - 1 : $this->lvl;
+        $name   = $this->parent ? $this->getName() : self::NO_PARENT;       
+        
+        return str_repeat(' |— ', $indent) . ' ' . $name;
     }
-
+    
     /**
      * Set name
      *

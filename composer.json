@@ -20,7 +20,8 @@
         "jms/di-extra-bundle": "1.1.*",
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "stof/doctrine-extensions-bundle": "dev-master",
-        "fpn/tag-bundle": "dev-master"
+        "fpn/tag-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -42,6 +43,7 @@
     "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
-        "symfony-web-dir": "web"
+        "symfony-web-dir": "web",
+        "symfony-assets-install": "symlink"
     }
 }

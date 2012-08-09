@@ -28,3 +28,7 @@ category_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "MZJYabBundle:Category:delete" }
     requirements: { _method: post }
+
+category_up:
+    pattern:  /{id}/up
+    defaults: { _controller: "MZJYabBundle:Category:up" }
