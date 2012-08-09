@@ -40,4 +40,13 @@ class BlogController extends Controller
             'entities' => $entities,
         ));
     }
+    
+    /**
+     * Sidebar
+     *
+     */
+    public function sidebarAction()
+    {
+        return $this->render('MZJYabBundle:Blog:sidebar.html.twig');
+    }
 }

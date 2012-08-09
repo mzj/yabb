@@ -1,5 +1,8 @@
 <nav id="cloud">
-    {% for tag, count in tags %}
-        <span class="cloud-count-{{ count }}">{{ tag }} </span>
-    {% endfor %}
+    <h3>Tag Cloud</h3>
+    <ul>
+        {% for tag, count in tags %}
+            <li class="cloud-count-{{ count }}">{{ tag }} </li>
+        {% endfor %}
+    </ul>
 </nav>

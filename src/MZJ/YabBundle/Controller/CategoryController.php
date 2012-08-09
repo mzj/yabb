@@ -33,7 +33,7 @@ class CategoryController extends Controller
      * Lists all Category entities.
      *
      */
-    public function sidebarAction()
+    public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
         
@@ -41,7 +41,7 @@ class CategoryController extends Controller
         
         $categories = $repo->getArrWithoutRoot();
        // exit(var_dump($categories));
-        return $this->render('MZJYabBundle:Category:sidebar.html.twig', array(
+        return $this->render('MZJYabBundle:Category:list.html.twig', array(
             'categories' => $categories,
         ));
     }

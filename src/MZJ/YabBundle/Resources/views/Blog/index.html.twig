@@ -1,15 +1,16 @@
 {% extends 'MZJYabBundle::layout.html.twig' %}
 
 {% block main %}
-{{ parent() }}
+    
+    {{ parent() }}
 
-<section>
-    {% for entity in entities %}
-        {% include 'MZJYabBundle:Post:short.html.twig' with {'post': entity} %}
-    {% else %}
-        <h2>There are no posts :(</h2>
-    {% endfor %}
-</section>
+    <section id="posts-list">
+        {% for entity in entities %}
+            {% include 'MZJYabBundle:Post:short.html.twig' with {'post': entity} %}
+        {% else %}
+            <h2>There are no posts :(</h2>
+        {% endfor %}
+    </section>
 
 
 {% endblock main %}
