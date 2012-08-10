@@ -1,8 +1,19 @@
 <article class="short-post">
+    
     <h2>
         <a href="{{ path('post_show', { 'created': post.createdAt|date("m-d-Y"), 'id': post.id, 'slug': post.slug }) }}">
             {{ post.title }}
-        </a>
+        </a>   
     </h2>
-    <p>{{ post.abstract }}</p>
+    
+    <time  datetime="{{ post.createdAt|date('Y-m-d') }}" pubdate>
+        <span class="day">{{ post.createdAt|date('d') }}</span>
+        <span class="month">{{ post.createdAt|date('M') }}</span>
+        <span class="year">{{ post.createdAt|date('Y') }}</span>
+    </time>     
+        
+    <p class="abstract">{{ post.abstract }}</p>
+    
+    <p><span class="read-more">Read Post &#8594;</span></p>
+    
 </article>
