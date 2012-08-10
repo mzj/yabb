@@ -46,7 +46,7 @@ class PostController extends Controller
      * Finds and displays a Post entity.
      *
      */
-    public function showAction($id)
+    public function viewAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $tagManager = $this->get('fpn_tag.tag_manager');
@@ -57,13 +57,11 @@ class PostController extends Controller
             throw $this->createNotFoundException('Unable to find Post entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        
         $tagManager->loadTagging($entity);
         
-        return $this->render('MZJYabBundle:Post:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+        return $this->render('MZJYabBundle:Post:view.html.twig', array(
+            'post'      => $entity,
+         ));
     }
 
     /**

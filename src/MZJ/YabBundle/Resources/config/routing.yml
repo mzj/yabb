@@ -14,3 +14,10 @@ MZJYabBundle_category:
 MZJYabBundle_home:
     pattern:  /
     defaults: { _controller: MZJYabBundle:Blog:index }
+
+MZJYabBundle_post:
+    pattern:  /{created}/{id}/{slug}
+    defaults: { _controller: "MZJYabBundle:Post:view" }
+    requirements:
+        _method:  GET
+        id: \d+

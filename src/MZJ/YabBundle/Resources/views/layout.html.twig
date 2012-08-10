@@ -17,13 +17,32 @@
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Share' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.0/styles/monokai.min.css">
 {% endblock stylesheets %}    
+
+{% block javascripts %}
+     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://yandex.st/highlightjs/7.0/highlight.min.js"></script>
+     {% stylesheets 'bundles/mzjyab/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endstylesheets %}
+{% endblock javascripts %}
 
 {% block body %}
         
     <div id="container" class="center">
         
-        <header><h1>Yet Another Blog</h1></header>
+        <header>
+            <h1>
+                <a href="{{ path('MZJYabBundle_home') }}">Yet Another Blog</a>
+            </h1>
+            <div id="coolness">
+                <div class="first"></div> 
+                <div class="second"></div> 
+                <div class="third"></div> 
+            </div>
+                <br class="clear">
+        </header>
         
         <div id="main">
             {% block main %}
@@ -37,6 +56,6 @@
     <!-- end #container -->        
     <div>
         
-    <footer>Copyleft 2012 - Marko Jovanovic</footer>
+    <footer>Copyleft 2012 - Marko Jovanović</footer>
     
 {% endblock body %}

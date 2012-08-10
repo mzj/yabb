@@ -33,7 +33,7 @@ class CategoryController extends Controller
      * Lists all Category entities.
      *
      */
-    public function listAction()
+    /*public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
         
@@ -43,6 +43,34 @@ class CategoryController extends Controller
        // exit(var_dump($categories));
         return $this->render('MZJYabBundle:Category:list.html.twig', array(
             'categories' => $categories,
+        ));
+    }*/
+    
+    public function listAction()
+    {
+        
+        $em = $this->getDoctrine()
+                   ->getEntityManager();
+        $repo = $em->getRepository('MZJYabBundle:Category');
+        $categories = $repo->getArrWithoutRoot();
+        $helper = $this;
+        
+        /**
+         * Generate hierarchical categories menu with unorderd list
+         */
+        $categories = $repo->buildTree($categories, array('decorate' => true, 
+                    'nodeDecorator' => function($node) use ($helper) {
+                        return '<a href="' . $helper->generateUrl('category', 
+                                array('id' => $node['id'],'slug' => $node['slug'])) 
+                                . '">' 
+                                //. str_repeat('->', $node['lvl'] - 1)
+                                . $node['name'] 
+                                . '</a>';
+                    })
+                );
+        
+        return  $this->render('MZJYabBundle:Category:list.html.twig', array(
+            'categories' => $categories
         ));
     }
     

@@ -34,7 +34,7 @@ class BlogController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('MZJYabBundle:Post')->findAll();
+        $entities = $em->getRepository('MZJYabBundle:Post')->getPosts();
 
         return $this->render('MZJYabBundle:Blog:index.html.twig', array(
             'entities' => $entities,

@@ -12,93 +12,92 @@ class CategoryFixtures extends AbstractFixture implements OrderedFixtureInterfac
 {
     public function load(ObjectManager $manager)
     {
-        $cat = new Category();
-        $cat->setName('root');
-        $cat->setDescription('lorem');
+        $cat1 = new Category();
+        $cat1->setName('root');
+        $cat1->setDescription('"Fake root category parent."');
             
-        $tshirts = new Category();
-        $tshirts->setName('T-Shirts');
-        $tshirts->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $tshirts->setParent($cat);
+        $cat2 = new Category();
+        $cat2->setName('Web Development');
+        $cat2->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat2->setParent($cat1);
         
-      
-        $vests = new Category();
-        $vests->setName('Vests');
-        $vests->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $vests->setParent($cat);
+        $cat3 = new Category();
+        $cat3->setName('Backend');
+        $cat3->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat3->setParent($cat2);
         
+        $cat4 = new Category();
+        $cat4->setName('Frontend');
+        $cat4->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat4->setParent($cat2);
         
-        $shirts = new Category();
-        $shirts->setName('Shirts');
-        $shirts->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $shirts->setParent($cat);
+        $cat5 = new Category();
+        $cat5->setName('PHP');
+        $cat5->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat5->setParent($cat3);
         
-        $longSleeves = new Category();
-        $longSleeves->setName('Long sleeves');
-        $longSleeves->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $longSleeves->setParent($shirts);
+        $cat7 = new Category();
+        $cat7->setName('CSS');
+        $cat7->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat7->setParent($cat4);
         
-        
-        $shortSleeves = new Category();
-        $shortSleeves->setName('Short sleeves');
-        $shortSleeves->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $shortSleeves->setParent($shirts);
-        
-        
-        $elasticBanded = new Category();
-        $elasticBanded->setName('Elastic Banded');
-        $elasticBanded->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $elasticBanded->setParent($longSleeves);
-        
+        $cat8 = new Category();
+        $cat8->setName('Programming');
+        $cat8->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat8->setParent($cat1);
                
-        $shoes = new Category();
-        $shoes->setName('Shoes');
-        $shoes->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $shoes->setParent($cat);
+        $cat6 = new Category();
+        $cat6->setName('Scala');
+        $cat6->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat6->setParent($cat8);
+        
+        $cat9 = new Category();
+        $cat9->setName('Javascript');
+        $cat9->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat9->setParent($cat4);
+        
+        $cat10 = new Category();
+        $cat10->setName('Tutorials');
+        $cat10->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat10->setParent($cat1);
+        
+        $cat11 = new Category();
+        $cat11->setName('Other');
+        $cat11->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat11->setParent($cat1);
+        
+        $cat12 = new Category();
+        $cat12->setName('Symfony2');
+        $cat12->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
+        $cat12->setParent($cat5);
         
         
-        $pants = new Category();
-        $pants->setName('Pants');
-        $pants->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $pants->setParent($cat);
-        
-        
-        $sweatshirts = new Category();
-        $sweatshirts->setName('Sweatshirts');
-        $sweatshirts->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $sweatshirts->setParent($cat);
-        
-        $hoodies = new Category();
-        $hoodies->setName('Hoodies');
-        $hoodies->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing eletra electrify denim vel ports.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. ');
-        $hoodies->setParent($sweatshirts);
-        
-        
-        
-        $manager->persist($cat);
-        $manager->persist($tshirts);
-        $manager->persist($vests);
-        $manager->persist($shirts);
-        $manager->persist($longSleeves);
-        $manager->persist($elasticBanded);
-        $manager->persist($shortSleeves);
-        $manager->persist($shoes);
-        $manager->persist($pants);
-        $manager->persist($sweatshirts);
-        $manager->persist($hoodies);
+        $manager->persist($cat1);
+        $manager->persist($cat2);
+        $manager->persist($cat3);
+        $manager->persist($cat4);
+        $manager->persist($cat5);
+        $manager->persist($cat6);
+        $manager->persist($cat7);
+        $manager->persist($cat8);
+        $manager->persist($cat9);
+        $manager->persist($cat10);
+        $manager->persist($cat11);
+        $manager->persist($cat12);
         
         $manager->flush();
         
-        $this->addReference('tshirts',   $tshirts);
-        $this->addReference('vests', $vests);
-        $this->addReference('shirts', $shirts);
-        $this->addReference('longSleeves', $longSleeves);
-        $this->addReference('elasticBanded', $elasticBanded);
-        $this->addReference('shortSleeves', $shortSleeves);
-        $this->addReference('shoes', $shoes);
-        $this->addReference('pants', $pants);
-        $this->addReference('sweatshirts', $sweatshirts);
-        $this->addReference('hoodies', $hoodies);
+        $this->addReference('webdevelopment',   $cat2);
+        $this->addReference('backend', $cat3);
+        $this->addReference('frontend', $cat4);
+        $this->addReference('php', $cat5);
+        $this->addReference('css', $cat6);
+        $this->addReference('programming', $cat8);
+        $this->addReference('scala', $cat6);
+        $this->addReference('javascript', $cat9);
+        $this->addReference('tutorials', $cat10);
+        $this->addReference('other', $cat11);
+        $this->addReference('symfony2', $cat12);
     }
     
     /**

@@ -22,4 +22,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class PostRepository extends EntityRepository
 {
+    /**
+     *
+     *
+     */
+    public function getPosts()
+    {
+        $query = $this->_em
+                      ->createQuery("SELECT p, c
+                                     FROM MZJ\YabBundle\Entity\Post p
+                                     JOIN p.categories c
+                                     ORDER BY p.created_at DESC, p.id DESC
+                                   ");
+        return $query->getResult();
+    }
 }
