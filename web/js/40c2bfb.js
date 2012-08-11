@@ -8,7 +8,7 @@ $(document).ready(function(){
     $('#coolness div').hover(function(){
           $('#coolness .second').fadeOut(500);
     }, function(){
-         $('#coolness .second').fadeIn(1000).stop(false, true);
+         $('#coolness .second').fadeIn(1000);
     });
     
     

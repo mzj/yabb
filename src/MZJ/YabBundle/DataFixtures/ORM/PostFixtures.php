@@ -119,16 +119,29 @@ EOT;
         $post4->setContent('Like I said in the title - this is my first post. Keep reading...<br>' . $this->code);
         $post4->addCategorie($manager->merge($this->getReference('symfony2')));
         $post4->addCategorie($manager->merge($this->getReference('tutorials')));
+        $post4->setCreatedAt(new \DateTime('-1 day'));
+        
+        $post5 = new Post();
+        $post5->setTitle('Symfony2 Blog Bundle Tutorial - Part 2');
+        $post5->setAbstract('At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
+            dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, 
+            id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi 
+            optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.');
+        $post5->setContent('Like I said in the title - this is my first post. Keep reading...<br>' . $this->code);
+        $post5->addCategorie($manager->merge($this->getReference('symfony2')));
+        $post5->addCategorie($manager->merge($this->getReference('tutorials')));
         
         $tagManager->addTags($tags, $post1);
-        $tagManager->addTags(array_slice($tags, 2), $post2);
+        $tagManager->addTags(array_slice($tags, 2, -1), $post2);
         $tagManager->addTags(array_slice($tags, 1, -2), $post3);
-        $tagManager->addTags(array_slice($tags, 2, -1), $post4);
+        $tagManager->addTags(array_slice($tags, 2), $post4);
+        $tagManager->addTags(array_slice($tags, 2), $post5);
         
         $manager->persist($post1);
         $manager->persist($post2);
         $manager->persist($post3);
         $manager->persist($post4);
+        $manager->persist($post5);
         
         $manager->flush();
         
@@ -136,6 +149,7 @@ EOT;
         $tagManager->saveTagging($post2);
         $tagManager->saveTagging($post3);
         $tagManager->saveTagging($post4);
+        $tagManager->saveTagging($post5);
     }
     
     /**
