@@ -15,10 +15,10 @@
     <p class="abstract">{{ post.abstract }}</p>
     
     <p>
-        <span class="categories"> In: 
+        <span class="categories"> { 
             {% for category in post.categories %}
                 {{ category.name }}{% if loop.last == false %},{% endif %}
-            {% endfor %}
+            {% endfor %} }
         </span>
         <span class="read-more">
             <a href="{{ path('MZJYabBundle_post', { 'created': post.createdAt|date("m-d-Y"), 'id': post.id, 'slug': post.slug }) }}">

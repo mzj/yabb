@@ -70,14 +70,14 @@ body {
 }
 
 header {
-    margin-top: 4%;
+    margin-top: 15%;
     width: 100%;
     margin-bottom: 2%;
 }
 
 header h1 {
     font-family: 'BebasNeueRegular';
-    font-size: 2.8em;
+    font-size: 2.7em;
     text-transform: uppercase;
     margin-left: -30px;
     width: auto;
@@ -101,8 +101,8 @@ header h1 a {
 }
 
 #coolness div {
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
     float: left;
     border-radius: 2px;
 }
@@ -120,8 +120,8 @@ header h1 a {
 
 #coolness .third {
     background-color: #CCC;
-    margin-top: -21px;
-    margin-left: -20px;
+    margin-top: -19px;
+    margin-left: -18px;
 }
 
 #container {
@@ -188,7 +188,7 @@ header h1 a {
 }
 
 #posts-list span.read-more a {
-    color: #F74A92;
+    color: #666;
     text-decoration: none;
 }
 
@@ -209,7 +209,9 @@ header h1 a {
     font-family: 'Open Sans'; 
     font-size: 13px;
     margin-top: 47px;
-    margin-left: -100px;
+    margin-left: -160px;
+    border-left: 1px solid rgba(0, 0, 0, 0.03);
+    padding-left: 70px;
 }
 
 #sidebar ul {
@@ -231,18 +233,18 @@ header h1 a {
 
 #sidebar h3 {
     font-family: 'Share';
-    font-weight: normal;
+    font-weight: 100;
     font-size: 1.7em;
     margin-left: -10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 #sidebar h2 {
     font-family: 'Share';
-    font-weight: normal;
+    font-weight: 100;
     font-size: 1.7em;
     margin-left: -10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 

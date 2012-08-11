@@ -63,7 +63,7 @@ class CategoryController extends Controller
                         return '<a href="' . $helper->generateUrl('category', 
                                 array('id' => $node['id'],'slug' => $node['slug'])) 
                                 . '">' 
-                                //. str_repeat('->', $node['lvl'] - 1)
+                                . str_repeat(': ', $node['lvl'] - 1)
                                 . $node['name'] 
                                 . '</a>';
                     })
