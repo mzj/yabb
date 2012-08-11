@@ -13,9 +13,12 @@
     </section>
     <section id="comments">
         <h2>Comments:</h2>
-        {#% for comment in comments %}
+        {% for key, comment in comments %}
+            {% if loop.index0 - 1 >= 0 and comment.lvl < comments[loop.index0 - 1].lvl %}
+                {{ '</article>'|repeat( comments[loop.index0 - 1].lvl - comment.lvl)|raw }} 
+            {% endif %}
             <article class="comment">
-                <p> {{ ' <article> '|repeat(comment.lvl)|raw }} {{ comment.content }} </p>
+                <p> {{ comment.content }} </p>
                 <p class="info"> 
                     <span class="name">Commented by: <span class="username">{{ comment.name }}</span></span>
                     <span class="rating">
@@ -33,8 +36,20 @@
                         </span>
                     </span>
                 </p>
-                 {{ ' </article> '|repeat(comment.lvl)|raw }}
-            </article>
+                
+                {% if loop.last == false %}
+                    {% if comment.rgt - comment.lft == 1 %} </article> {% endif %}
+                {% else %}
+                    </article> 
+                {% endif %}
+                {#% if loop.last == false %}
+                    {% if key - 1 >= 0 and comments[key - 1].lvl < comment.lvl %}
+                        </article> 
+                    {% endif %}
+                        {{ loop.index0 }} --- {{ key }}
+                {% else %}
+                    </article>
+                {% endif %#}
         {% else %}
            <article class="comment"> 
               {% if post.commentsEnabled == false %}
@@ -43,8 +58,8 @@
                    No comments 
               {% endif %}
            </article>
-        {% endfor %#}
-           {{ comments|raw }} 
+        {% endfor %}
+           {#{ comments|raw }#} 
     </section>
 
 {% endblock main %}

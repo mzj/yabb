@@ -61,27 +61,36 @@ class PostController extends Controller
         
         $repo = $em->getRepository('MZJYabBundle:Comment');
         $comments = $repo->getAsArray();
-        $helper = $this;
+        
+        //exit(print_r($comments));
+        /*$that = $this;
         
         $options = array(
                         'decorate' => true,
-                        'rootOpen' => '<article>',
-                        'rootClose' => '</article>',
+                        'rootOpen' => '',
+                        'rootClose' => '',
                         'childOpen' => '<article>',
                         'childClose' => '</article>',
-                        'nodeDecorator' => function($node) {
-                            return htmlentities($node['content']);
+                        'nodeDecorator' => function($node) use ($that) {
+                            return $that->builderHelper($node);
                         }
                     );
-        /**
-         * Generate hierarchical categories menu with unorderd list
-         */
-        $comments = $repo->buildTree($comments, $options);
+                    
+        $comments = $repo->buildTree($comments, $options);*/
         
         return $this->render('MZJYabBundle:Post:view.html.twig', array(
             'post'      => $entity,
             'comments'  => $comments
          ));
+    }
+    
+    public function builderHelper($node)
+    {
+        $res = '<p>' . htmlentities($node['content']) . '</p>';
+        $res .= '<p class="info">';
+        
+        
+        return $res;
     }
 
     /**

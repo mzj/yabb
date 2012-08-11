@@ -61,10 +61,22 @@ class CommentFixtures extends AbstractFixture implements OrderedFixtureInterface
         $comm4->setParent($comm2);
 
         
+        $comm5 = new Comment();
+        $comm5->setName('Amy');
+        $comm5->setContent('@Marko - Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+                );
+        $comm5->setPost($manager->merge($this->getReference('post5')));
+        $comm5->setLikes(22);
+        $comm5->setDislikes(1);
+        $comm5->setParent($comm1);
+        
         $manager->persist($comm1);
         $manager->persist($comm2);
         $manager->persist($comm3);
         $manager->persist($comm4);
+        $manager->persist($comm5);
         
         $manager->flush();
     }
