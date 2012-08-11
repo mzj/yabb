@@ -12,54 +12,11 @@
         </article>
     </section>
     <section id="comments">
-        <h2>Comments:</h2>
-        {% for key, comment in comments %}
-            {% if loop.index0 - 1 >= 0 and comment.lvl < comments[loop.index0 - 1].lvl %}
-                {{ '</article>'|repeat( comments[loop.index0 - 1].lvl - comment.lvl)|raw }} 
-            {% endif %}
-            <article class="comment">
-                <p> {{ comment.content }} </p>
-                <p class="info"> 
-                    <span class="name">Commented by: <span class="username">{{ comment.name }}</span></span>
-                    <span class="rating">
-                        <span class="like">
-                            {{ comment.likes }} 
-                            <span class="plus">
-                                <a href="{{ path('comment_like', { 'id': comment.id }) }}">{+}</a>
-                            </span>
-                        </span>
-                        <span class="dislike">
-                           {{ comment.dislikes }} 
-                           <span class="minus">
-                               <a href="{{ path('comment_dislike', { 'id': comment.id }) }}">{-}</a>
-                           </span>
-                        </span>
-                    </span>
-                </p>
-                
-                {% if loop.last == false %}
-                    {% if comment.rgt - comment.lft == 1 %} </article> {% endif %}
-                {% else %}
-                    </article> 
-                {% endif %}
-                {#% if loop.last == false %}
-                    {% if key - 1 >= 0 and comments[key - 1].lvl < comment.lvl %}
-                        </article> 
-                    {% endif %}
-                        {{ loop.index0 }} --- {{ key }}
-                {% else %}
-                    </article>
-                {% endif %#}
+        {% if post.commentsEnabled %}
+            {% render "MZJYabBundle:Comment:list" with {'postId': post.id} %}
         {% else %}
-           <article class="comment"> 
-              {% if post.commentsEnabled == false %}
-                   Comments disabled
-              {% else %}
-                   No comments 
-              {% endif %}
-           </article>
-        {% endfor %}
-           {#{ comments|raw }#} 
+            Comments disabled
+        {% endif %}
     </section>
 
 {% endblock main %}

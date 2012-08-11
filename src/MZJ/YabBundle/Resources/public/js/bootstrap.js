@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 $(document).ready(function(){
+    
     hljs.initHighlightingOnLoad();
     
     $('#coolness div').hover(function(){
@@ -12,7 +13,14 @@ $(document).ready(function(){
     });
     
     
-    
+    $(".reply a").click(function() {
+        var oldAction = $('#comment-form').attr("action");
+        var add = this.className;
+        var action = oldAction + '/' + add;
+        $("#comment-form").attr("action", action);
+        
+        console.log($('#comment-form').attr("action"));
+    });
     
 });
 

@@ -9,7 +9,14 @@ MZJYabBundle_post_view:
         _method:  GET
         id: \d+
         
+MZJYabBundle_comment_list:
+    pattern:  /comment/{postId)
+    defaults: { _controller: "MZJYabBundle:Comment:list" }
+    requirements:
+        _method:  GET
+        id: \d+
         
+                
 # Includes         
 MZJYabBundle_post:
     resource: "@MZJYabBundle/Resources/config/routing/post.yml"

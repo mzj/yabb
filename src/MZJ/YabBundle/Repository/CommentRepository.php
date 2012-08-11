@@ -26,10 +26,18 @@ class CommentRepository extends NestedTreeRepository
      * 
      * @return array 
      */
-    public function getAsArray() 
+    public function getAsArray($postId) 
     {
-        $comments = $this->childrenQuery(null, false, array('root', 'id'))->getArrayResult();
-        //unset($comments[0]);
+        $q = $this->_em->createQueryBuilder()
+                        ->select('node')
+                        ->from('MZJ\YabBundle\Entity\Comment', 'node')
+                        ->join('node.post', 'post')
+                        ->orderBy('node.root, node.lft', 'ASC')
+                        ->where('post.id = :pid')
+                        ->getQuery();
+        $q->setParameter('pid', $postId);
+        $comments = $q->getArrayResult();
+        
         return $comments;        
     }
 }

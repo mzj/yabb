@@ -40,12 +40,12 @@ class Comment
     /**
      * @var integer $likes
      */
-    private $likes;
+    private $likes = 0;
 
     /**
      * @var integer $dislikes
      */
-    private $dislikes;
+    private $dislikes = 0;
 
     /**
      * @var $post

@@ -11,8 +11,8 @@ comment_new:
     defaults: { _controller: "MZJYabBundle:Comment:new" }
 
 comment_create:
-    pattern:  /create
-    defaults: { _controller: "MZJYabBundle:Comment:create" }
+    pattern:  /create/{postId}/{commentId}
+    defaults: { _controller: "MZJYabBundle:Comment:create", commentId: 1 }
     requirements: { _method: post }
 
 comment_edit:

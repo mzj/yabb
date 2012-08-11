@@ -130,6 +130,7 @@ EOT;
         $post5->setContent('Like I said in the title - this is my first post. Keep reading...<br>' . $this->code);
         $post5->addCategorie($manager->merge($this->getReference('symfony2')));
         $post5->addCategorie($manager->merge($this->getReference('tutorials')));
+        $post5->setCommentsEnabled(true);
         
         $tagManager->addTags($tags, $post1);
         $tagManager->addTags(array_slice($tags, 2, -1), $post2);

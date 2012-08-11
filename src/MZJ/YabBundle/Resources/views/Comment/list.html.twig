@@ -1,0 +1,70 @@
+<h2>Comments:</h2>
+{# Threaded comment system #}
+{% for key, comment in comments %}
+    {% if loop.index0 - 1 >= 0 and comment.lvl < comments[loop.index0 - 1].lvl %}
+        {{ '</article>'|repeat( comments[loop.index0 - 1].lvl - comment.lvl)|raw }} 
+    {% endif %}
+    <article class="comment">
+        <p>
+            <span class="rating">
+                <span class="like">
+                    {{ comment.likes }} 
+                    <span class="plus">
+                        <a href="{{ path('comment_like', { 'id': comment.id }) }}">{+}</a>
+                    </span>
+                </span>
+                <span class="dislike">
+                   {{ comment.dislikes }} 
+                   <span class="minus">
+                       <a href="{{ path('comment_dislike', { 'id': comment.id }) }}">{-}</a>
+                   </span>
+                </span>
+            </span>
+        </p>
+        <p> {{ comment.content }} </p>
+        <p class="info"> 
+            
+            <span class="name">By: <span class="username">{{ comment.name }}</span></span>
+            
+            <span class="reply"><a href="#comment-form" class="{{ comment.id }}">Reply &#8594;</a></span>
+
+            
+            <br class="clear">
+        </p>
+
+        {% if loop.last == false %}
+            {% if comment.rgt - comment.lft == 1 %} </article> {% endif %}
+        {% else %}
+            </article> 
+        {% endif %}
+{% else %}
+   <article class="comment"> 
+      {% if post.commentsEnabled == false %}
+           Comments disabled
+      {% else %}
+           No comments 
+      {% endif %}
+   </article>
+{% endfor %}
+            
+<div class="comment-form-wrapper">
+    <form action="{{ path('comment_create', {'postId': postId}) }}" method="post"  id="comment-form">
+        {{ form_errors(form) }}
+
+        <fieldset>
+            <legend> Leave a Comment </legend>
+            <div>{{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}</div>
+
+            <div>{{ form_label(form.content) }}
+            {{ form_errors(form.content) }}
+            {{ form_widget(form.content) }}</div>
+
+            {{ form_rest(form) }}
+            
+            <p><input type="submit" value="Comment" class="comment-btn"/></p>
+        </fieldset>
+            
+    </form>
+</div>

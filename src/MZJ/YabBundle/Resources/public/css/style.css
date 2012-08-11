@@ -72,7 +72,7 @@ body {
 header {
     margin-top: 15%;
     width: 100%;
-    margin-bottom: 0%;
+    margin-bottom: 2%;
 }
 
 header h1 {
@@ -339,12 +339,22 @@ code {
     color: #666;
     font-size: 13px;
     margin-top: 20px;
+    line-height:17px;
 }
 
 #comments article article {
-    margin-top: 10px;
-    padding-left: 20px;
+    padding-left: 45px;
+    margin-top: 15px;
 }
+
+#comments article article article {
+    padding-left: 45px;
+}
+
+#comments article article article article {
+    padding-left: 45px;
+}
+
 
 .comment .info {
     margin-top: 5px;
@@ -355,16 +365,77 @@ code {
 }
 
 .comment .name {
-    
+    float: left;
 }
 
 .comment .rating {
     float: right;
     font-size: 12px;
+    text-align: right;
+    width: 100%;
 }
+
+.comment .reply {
+    float: right;
+}
+
+.comment .reply a {
+    text-decoration: none;
+    color: #666;
+}
+
 
 
 .comment .rating .like { color: #6EB8F1; }
 .comment .rating .dislike { color: #F74A92; margin-left: 10px; }
 .comment .rating .like .plus a {   color: #6EB8F1; text-decoration: none; }
 .comment .rating .dislike .minus a { color: #F74A92; text-decoration: none; }
+
+.comment-form-wrapper {
+    margin-top: 30px;
+    color: #666;
+    font-size: 13px;
+}
+
+.comment-form-wrapper fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    padding: 20px;
+}
+
+.comment-form-wrapper legend {
+    font-family: 'Georgia';
+    padding: 5px;
+    margin-left: 15px;
+}
+
+.comment-form-wrapper label {
+    font-family: 'Georgia';
+}
+.comment-form-wrapper div {
+    margin-top: 10px;  
+}
+
+.comment-form-wrapper fieldset input {
+    margin-left: 25px;
+    width: 200px;
+}
+
+.comment-form-wrapper fieldset textarea {
+    margin-left: 12px;
+    width: 400px;
+    height: 100px;
+}
+
+.comment-form-wrapper .comment-btn {
+    float: right;
+    margin-right: 50px;
+    margin-top: 20px;
+    width: 70px;
+    height: 30px;
+    padding: 5px;
+    background: #FFF;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    color: #666;
+    font-family: 'Georgia';
+}

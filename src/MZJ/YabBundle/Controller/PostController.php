@@ -59,38 +59,9 @@ class PostController extends Controller
 
         $tagManager->loadTagging($entity);
         
-        $repo = $em->getRepository('MZJYabBundle:Comment');
-        $comments = $repo->getAsArray();
-        
-        //exit(print_r($comments));
-        /*$that = $this;
-        
-        $options = array(
-                        'decorate' => true,
-                        'rootOpen' => '',
-                        'rootClose' => '',
-                        'childOpen' => '<article>',
-                        'childClose' => '</article>',
-                        'nodeDecorator' => function($node) use ($that) {
-                            return $that->builderHelper($node);
-                        }
-                    );
-                    
-        $comments = $repo->buildTree($comments, $options);*/
-        
         return $this->render('MZJYabBundle:Post:view.html.twig', array(
-            'post'      => $entity,
-            'comments'  => $comments
+            'post'      => $entity
          ));
-    }
-    
-    public function builderHelper($node)
-    {
-        $res = '<p>' . htmlentities($node['content']) . '</p>';
-        $res .= '<p class="info">';
-        
-        
-        return $res;
     }
 
     /**

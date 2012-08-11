@@ -27,6 +27,27 @@ class CommentController extends Controller
         return $this->render('MZJYabBundle:Comment:index.html.twig', array(
             'entities' => $entities,
         ));
+    }   
+    
+    /**
+     * Finds and displays a Post entity.
+     *
+     */
+    public function listAction($postId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('MZJYabBundle:Comment');
+        
+        $comments = $repo->getAsArray($postId);
+        
+        $entity = new Comment();
+        $form   = $this->createForm(new CommentType(), $entity);
+        
+        return $this->render('MZJYabBundle:Comment:list.html.twig', array(
+            'comments'  => $comments,
+            'form'      => $form->createView(),
+            'postId'    => $postId
+         ));
     }
 
     /**
@@ -69,7 +90,7 @@ class CommentController extends Controller
      * Creates a new Comment entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $postId, $commentId)
     {
         $entity  = new Comment();
         $form = $this->createForm(new CommentType(), $entity);
@@ -77,6 +98,13 @@ class CommentController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $post = $em->getRepository('MZJYabBundle:Post')->find($postId);
+            $comment = $em->getRepository('MZJYabBundle:Comment')->find($commentId);
+            
+            $entity->setPost($post);
+            $entity->setParent($comment);
+            
             $em->persist($entity);
             $em->flush();
 
