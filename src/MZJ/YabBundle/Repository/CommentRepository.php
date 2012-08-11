@@ -11,8 +11,7 @@
 
 namespace MZJ\YabBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
-
+use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 /**
  * MZJ\YabBundle\Repository\CommentRepository
  *
@@ -20,6 +19,17 @@ use Doctrine\ORM\EntityRepository;
  *
  * @author Marko Jovanovic <markozjovanovic@gmail.com>
  */
-class CommentRepository extends EntityRepository
-{
+class CommentRepository extends NestedTreeRepository
+{    
+    /**
+     * Strips root category
+     * 
+     * @return array 
+     */
+    public function getAsArray() 
+    {
+        $comments = $this->childrenQuery(null, false, array('root', 'id'))->getArrayResult();
+        //unset($comments[0]);
+        return $comments;        
+    }
 }

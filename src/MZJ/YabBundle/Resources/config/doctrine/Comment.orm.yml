@@ -1,6 +1,9 @@
 MZJ\YabBundle\Entity\Comment:
     type: entity
-    table: comment
+    table: comment    
+    gedmo:
+        tree:
+           type: nested
     repositoryClass: MZJ\YabBundle\Repository\CommentRepository
     fields:
         id:
@@ -28,8 +31,39 @@ MZJ\YabBundle\Entity\Comment:
             gedmo:
                 timestampable:
                     on: update
+        lft:
+            type: integer
+            gedmo:
+              - treeLeft
+        rgt:
+            type: integer
+            gedmo:
+              - treeRight
+        lvl:
+            type: integer
+            gedmo:
+              - treeLevel
+        root:
+            type: integer
+            gedmo:
+              - treeRoot
     manyToOne:
         post:
             targetEntity: Post
             inversedBy: comments
+        parent:
+           targetEntity: MZJ\YabBundle\Entity\Comment
+           inversedBy: children
+           joinColumn:
+               name: parent_id
+               referencedColumnName: id
+               onDelete: SET NULL
+           gedmo:
+               - treeParent
+    oneToMany:
+        children:
+            targetEntity: MZJ\YabBundle\Entity\Comment
+            mappedBy: parent
+            orderBy:
+                id: DESC
     lifecycleCallbacks: {  }

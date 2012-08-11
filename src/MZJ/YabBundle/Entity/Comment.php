@@ -61,6 +61,18 @@ class Comment
      * @var \DateTime $updated_at
      */
     private $updated_at;
+    
+    /**
+     *
+     * @var type 
+     */
+    private $parent;
+    
+    /**
+     *
+     * @var type 
+     */
+    private $children;
 
     /**
      * Get id
@@ -231,5 +243,180 @@ class Comment
     public function getUpdatedAt()
     {
         return $this->updated_at;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add children
+     *
+     * @param MZJ\YabBundle\Entity\Comment $children
+     * @return Comment
+     */
+    public function addChildren(\MZJ\YabBundle\Entity\Comment $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param MZJ\YabBundle\Entity\Comment $children
+     */
+    public function removeChildren(\MZJ\YabBundle\Entity\Comment $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param MZJ\YabBundle\Entity\Comment $parent
+     * @return Comment
+     */
+    public function setParent(\MZJ\YabBundle\Entity\Comment $parent = null)
+    {
+        $this->parent = $parent;
+    
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return MZJ\YabBundle\Entity\Comment 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+    /**
+     * @var integer $lft
+     */
+    private $lft;
+
+    /**
+     * @var integer $rgt
+     */
+    private $rgt;
+
+    /**
+     * @var integer $lvl
+     */
+    private $lvl;
+
+    /**
+     * @var integer $root
+     */
+    private $root;
+
+
+    /**
+     * Set lft
+     *
+     * @param integer $lft
+     * @return Comment
+     */
+    public function setLft($lft)
+    {
+        $this->lft = $lft;
+    
+        return $this;
+    }
+
+    /**
+     * Get lft
+     *
+     * @return integer 
+     */
+    public function getLft()
+    {
+        return $this->lft;
+    }
+
+    /**
+     * Set rgt
+     *
+     * @param integer $rgt
+     * @return Comment
+     */
+    public function setRgt($rgt)
+    {
+        $this->rgt = $rgt;
+    
+        return $this;
+    }
+
+    /**
+     * Get rgt
+     *
+     * @return integer 
+     */
+    public function getRgt()
+    {
+        return $this->rgt;
+    }
+
+    /**
+     * Set lvl
+     *
+     * @param integer $lvl
+     * @return Comment
+     */
+    public function setLvl($lvl)
+    {
+        $this->lvl = $lvl;
+    
+        return $this;
+    }
+
+    /**
+     * Get lvl
+     *
+     * @return integer 
+     */
+    public function getLvl()
+    {
+        return $this->lvl;
+    }
+
+    /**
+     * Set root
+     *
+     * @param integer $root
+     * @return Comment
+     */
+    public function setRoot($root)
+    {
+        $this->root = $root;
+    
+        return $this;
+    }
+
+    /**
+     * Get root
+     *
+     * @return integer 
+     */
+    public function getRoot()
+    {
+        return $this->root;
     }
 }

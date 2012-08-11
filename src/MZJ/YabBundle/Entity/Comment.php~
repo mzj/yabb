@@ -61,6 +61,18 @@ class Comment
      * @var \DateTime $updated_at
      */
     private $updated_at;
+    
+    /**
+     *
+     * @var type 
+     */
+    private $parent;
+    
+    /**
+     *
+     * @var type 
+     */
+    private $children;
 
     /**
      * Get id
@@ -231,5 +243,68 @@ class Comment
     public function getUpdatedAt()
     {
         return $this->updated_at;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add children
+     *
+     * @param MZJ\YabBundle\Entity\Comment $children
+     * @return Comment
+     */
+    public function addChildren(\MZJ\YabBundle\Entity\Comment $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param MZJ\YabBundle\Entity\Comment $children
+     */
+    public function removeChildren(\MZJ\YabBundle\Entity\Comment $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param MZJ\YabBundle\Entity\Comment $parent
+     * @return Comment
+     */
+    public function setParent(\MZJ\YabBundle\Entity\Comment $parent = null)
+    {
+        $this->parent = $parent;
+    
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return MZJ\YabBundle\Entity\Comment 
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 }

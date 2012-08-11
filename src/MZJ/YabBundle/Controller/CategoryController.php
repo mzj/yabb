@@ -48,7 +48,6 @@ class CategoryController extends Controller
     
     public function listAction()
     {
-        
         $em = $this->getDoctrine()
                    ->getEntityManager();
         $repo = $em->getRepository('MZJYabBundle:Category');

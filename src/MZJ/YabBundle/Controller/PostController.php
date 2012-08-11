@@ -59,8 +59,28 @@ class PostController extends Controller
 
         $tagManager->loadTagging($entity);
         
+        $repo = $em->getRepository('MZJYabBundle:Comment');
+        $comments = $repo->getAsArray();
+        $helper = $this;
+        
+        $options = array(
+                        'decorate' => true,
+                        'rootOpen' => '<article>',
+                        'rootClose' => '</article>',
+                        'childOpen' => '<article>',
+                        'childClose' => '</article>',
+                        'nodeDecorator' => function($node) {
+                            return htmlentities($node['content']);
+                        }
+                    );
+        /**
+         * Generate hierarchical categories menu with unorderd list
+         */
+        $comments = $repo->buildTree($comments, $options);
+        
         return $this->render('MZJYabBundle:Post:view.html.twig', array(
             'post'      => $entity,
+            'comments'  => $comments
          ));
     }
 
