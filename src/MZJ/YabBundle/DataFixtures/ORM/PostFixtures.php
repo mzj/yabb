@@ -150,6 +150,12 @@ EOT;
         $tagManager->saveTagging($post3);
         $tagManager->saveTagging($post4);
         $tagManager->saveTagging($post5);
+        
+        $this->addReference('post1',   $post1);
+        $this->addReference('post2',   $post2);
+        $this->addReference('post3',   $post3);
+        $this->addReference('post4',   $post4);
+        $this->addReference('post5',   $post5);
     }
     
     /**

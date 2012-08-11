@@ -7,9 +7,43 @@
     <section id="post">
         <article>
             <h1>{{ post.title }}</h1>
+            <p class="abstract">{{ post.abstract }}</p>
             <p>{{ post.content|raw }}</p>
         </article>
     </section>
-
+    <section id="comments">
+        <h2>Comments:</h2>
+        {% for comment in post.comments %}
+            <article class="comment">
+                <p>  {{ comment.content }} </p>
+                <p class="info"> 
+                    <span class="name">Commented by: <span class="username">{{ comment.name }}</span></span>
+                    <span class="rating">
+                        <span class="like">
+                            {{ comment.likes }} 
+                            <span class="plus">
+                                <a href="{{ path('comment_like', { 'id': comment.id }) }}">{+}</a>
+                            </span>
+                        </span>
+                        <span class="dislike">
+                           {{ comment.dislikes }} 
+                           <span class="minus">
+                               <a href="{{ path('comment_dislike', { 'id': comment.id }) }}">{-}</a>
+                           </span>
+                        </span>
+                    </span>
+                </p>
+            <article>
+        {% else %}
+           <article class="comment"> 
+              {% if post.commentsEnabled == false %}
+                   Comments disabled
+              {% else %}
+                   No comments 
+              {% endif %}
+           </article>
+        {% endfor %}
+            
+    </section>
 
 {% endblock main %}

@@ -257,8 +257,10 @@ class Post implements Taggable
      */
     public function addComment(\MZJ\YabBundle\Entity\Comment $comments)
     {
+        //$comment->setPost($this);
+        
         $this->comments[] = $comments;
-    
+        
         return $this;
     }
 

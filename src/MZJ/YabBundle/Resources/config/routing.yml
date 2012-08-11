@@ -1,3 +1,16 @@
+MZJYabBundle_home:
+    pattern:  /
+    defaults: { _controller: MZJYabBundle:Blog:index }
+
+MZJYabBundle_post_view:
+    pattern:  /view/{created}/{id}/{slug}
+    defaults: { _controller: "MZJYabBundle:Post:view" }
+    requirements:
+        _method:  GET
+        id: \d+
+        
+        
+# Includes         
 MZJYabBundle_post:
     resource: "@MZJYabBundle/Resources/config/routing/post.yml"
     prefix:   /post
@@ -9,15 +22,3 @@ MZJYabBundle_comment:
 MZJYabBundle_category:
     resource: "@MZJYabBundle/Resources/config/routing/category.yml"
     prefix:   /category
-
-        
-MZJYabBundle_home:
-    pattern:  /
-    defaults: { _controller: MZJYabBundle:Blog:index }
-
-MZJYabBundle_post:
-    pattern:  /{created}/{id}/{slug}
-    defaults: { _controller: "MZJYabBundle:Post:view" }
-    requirements:
-        _method:  GET
-        id: \d+

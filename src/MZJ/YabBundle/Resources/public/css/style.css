@@ -72,7 +72,7 @@ body {
 header {
     margin-top: 15%;
     width: 100%;
-    margin-bottom: 2%;
+    margin-bottom: 0%;
 }
 
 header h1 {
@@ -89,7 +89,8 @@ header h1 {
 
 header h1 a {
     text-decoration: none;
-    color: #343838;
+    /*color: #343838;*/
+    color: #444;
     font-weight: 100;
 }
 
@@ -132,6 +133,7 @@ header h1 a {
 #main {
     float: left;
     margin-left: 15px;
+    width: 560px;
 }
 
 #posts-list {
@@ -139,9 +141,9 @@ header h1 a {
 }
 
 #posts-list h2 {
-    font-family: 'Share';
+    font-family: 'Georgia';
     font-weight: normal;
-    font-size: 1.6em;
+    font-size: 1.4em;
     display: inline;
     margin-left: -15px;
 }
@@ -171,7 +173,7 @@ header h1 a {
 
 #posts-list p.abstract {
     margin-top: 10px;
-    font-family: 'Open Sans'; 
+    font-family: 'Georgia'; 
     font-weight: normal;
     color: #666;
     font-size: 13px;
@@ -181,9 +183,9 @@ header h1 a {
 
 #posts-list span.read-more {
     color: #F74A92;
-    font-family: 'Open Sans'; 
-    font-size: 13px;
-    margin-right: 10px;
+    font-family: 'PT Sans Narrow';
+    font-size: 14px;
+    margin-right: 5px;
     float:right;
 }
 
@@ -194,7 +196,7 @@ header h1 a {
 
 #posts-list span.categories {
     color: #6EB8F1;
-    font-family: 'Open Sans'; 
+    font-family: 'Georgia'; 
     font-size: 13px;
     text-transform: lowercase;
 }
@@ -208,7 +210,8 @@ header h1 a {
     color: #333;
     font-family: 'Open Sans'; 
     font-size: 13px;
-    margin-top: 47px;
+    font-weight: 100;
+    margin-top: 43px;
     margin-left: -160px;
     border-left: 1px solid rgba(0, 0, 0, 0.03);
     padding-left: 70px;
@@ -232,17 +235,17 @@ header h1 a {
 }
 
 #sidebar h3 {
-    font-family: 'Share';
+    font-family: 'Georgia';
     font-weight: 100;
-    font-size: 1.7em;
+    font-size: 1.5em;
     margin-left: -10px;
     margin-bottom: 10px;
 }
 
 #sidebar h2 {
-    font-family: 'Share';
+    font-family: 'Georgia';
     font-weight: 100;
-    font-size: 1.7em;
+    font-size: 1.5em;
     margin-left: -10px;
     margin-bottom: 10px;
 }
@@ -280,7 +283,7 @@ footer {
     top: 100%;
     clear: both;
     color: #666;
-    font-family: 'Open Sans';
+    font-family: 'Georgia';
     font-size: 13px;
 }
 
@@ -297,16 +300,66 @@ code {
 }
 
 #post h1 {
-    font-family: 'Share';
+    font-family: 'Georgia';
     font-weight: normal;
-    font-size: 1.8em;
+    font-size: 1.6em;
     color: #444;
+    margin-bottom: 20px;
+    margin-left: -25px;
+}
+
+#post .abstract {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    padding-bottom: 20px;
     margin-bottom: 20px;
 }
 
 #post article p {
-    font-family: 'Open Sans'; 
+    font-family: 'Georgia'; 
     font-weight: normal;
     color: #666;
     font-size: 13px;
 }
+
+#comments {
+    margin-top: 40px;
+}
+
+#comments h2 {
+    font-family: 'Georgia';
+    font-weight: normal;
+    font-size: 1.5em;
+    color: #444;
+    margin-left: -15px;
+}
+
+.comment {
+    font-family: 'Georgia'; 
+    font-weight: normal;
+    color: #666;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.comment .info {
+    margin-top: 5px;
+}
+
+.comment .info .username {
+    font-weight: bold;
+}
+
+.comment .name {
+    
+}
+
+.comment .rating {
+    float: right;
+    font-size: 12px;
+}
+
+
+.comment .rating .like { color: #6EB8F1; }
+.comment .rating .dislike { color: #F74A92; margin-left: 10px; }
+.comment .rating .like .plus a {   color: #6EB8F1; text-decoration: none; }
+.comment .rating .dislike .minus a { color: #F74A92; text-decoration: none; }

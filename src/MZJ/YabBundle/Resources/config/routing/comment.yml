@@ -28,3 +28,13 @@ comment_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "MZJYabBundle:Comment:delete" }
     requirements: { _method: post }
+
+comment_like:
+    pattern:  /{id}/like
+    defaults: { _controller: "MZJYabBundle:Comment:like" }
+    requirements: { _method: get }
+    
+comment_dislike:
+    pattern:  /{id}/dislike
+    defaults: { _controller: "MZJYabBundle:Comment:dislike" }
+    requirements: { _method: get }

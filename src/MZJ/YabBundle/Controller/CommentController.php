@@ -178,9 +178,10 @@ class CommentController extends Controller
     public function likeAction(Request $request, $id) 
     {
         $em = $this->getDoctrine()->getManager();
-
+        
         $entity = $em->getRepository('MZJYabBundle:Comment')->find($id);
-
+        $post = $entity->getPost();
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Comment entity.');
         }
@@ -188,6 +189,10 @@ class CommentController extends Controller
         $entity->setLikes($likes);
         $em->persist($entity);
         $em->flush();
+        
+        return $this->redirect($this->generateUrl('MZJYabBundle_post_view', 
+                array('created' => '06-10-1988', 'id' => $post->getId(), 'slug' => $post->getSlug())
+             ));
     }
     
     /**
@@ -199,16 +204,21 @@ class CommentController extends Controller
     public function dislikeAction(Request $request, $id) 
     {
         $em = $this->getDoctrine()->getManager();
-
+        
         $entity = $em->getRepository('MZJYabBundle:Comment')->find($id);
-
+        $post = $entity->getPost();
+        
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Comment entity.');
         }
-        $dislikes = $entity->getLikes() - 1;
-        $entity->setLikes($dislikes);
+        $likes = $entity->getDislikes() + 1;
+        $entity->setDislikes($likes);
         $em->persist($entity);
         $em->flush();
+        
+        return $this->redirect($this->generateUrl('MZJYabBundle_post_view', 
+                array('created' => '06-10-1988', 'id' => $post->getId(), 'slug' => $post->getSlug())
+             ));
     }
     
     /**
