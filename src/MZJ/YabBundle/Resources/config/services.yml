@@ -1,8 +1,14 @@
 parameters:
 #    mzj_yab.example.class: MZJ\YabBundle\Example
+    fpn_tag.tag_manager.class: FPN\TagBundle\Entity\TagManager
 
 services:
     mzj_yab.twig.extension:
         class: MZJ\YabBundle\Twig\Extension\RepeatExtension
         tags:
             - { name: twig.extension }
+   
+    fpn_tag.tag_manager:
+        class: FPN\TagBundle\Entity\TagManager2
+        tags:
+            - { name: fpn_tag.tag_manager }

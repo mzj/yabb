@@ -103,6 +103,11 @@ class Post implements Taggable
 
         return $this->tags;
     }
+    
+    public function setTags($tags) 
+    {
+        $this->tags = $tags;
+    }
 
     /**
      * 

@@ -14,8 +14,7 @@ MZJ\YabBundle\Entity\Post:
         content:
             type: text
         abstract:
-            type: string
-            length: 255
+            type: text
         created_at:
             type: datetime
             gedmo:

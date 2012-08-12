@@ -33,9 +33,9 @@ class BlogController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+        
         $entities = $em->getRepository('MZJYabBundle:Post')->getPosts();
-
+        
         return $this->render('MZJYabBundle:Blog:index.html.twig', array(
             'entities' => $entities,
         ));

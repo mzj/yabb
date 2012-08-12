@@ -28,23 +28,6 @@ class CategoryController extends Controller
             'entities' => $entities,
         ));
     }
-
-    /**
-     * Lists all Category entities.
-     *
-     */
-    /*public function listAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        
-        $repo = $em->getRepository('MZJYabBundle:Category');
-        
-        $categories = $repo->getArrWithoutRoot();
-       // exit(var_dump($categories));
-        return $this->render('MZJYabBundle:Category:list.html.twig', array(
-            'categories' => $categories,
-        ));
-    }*/
     
     public function listAction()
     {

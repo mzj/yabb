@@ -3,15 +3,15 @@ MZJYabBundle_home:
     defaults: { _controller: MZJYabBundle:Blog:index }
 
 MZJYabBundle_post_view:
-    pattern:  /view/{created}/{id}/{slug}
+    pattern:  /{id}/{slug}
     defaults: { _controller: "MZJYabBundle:Post:view" }
     requirements:
         _method:  GET
         id: \d+
         
-MZJYabBundle_comment_list:
+MZJYabBundle_comments:
     pattern:  /comment/{postId)
-    defaults: { _controller: "MZJYabBundle:Comment:list" }
+    defaults: { _controller: "MZJYabBundle:Comment:comments" }
     requirements:
         _method:  GET
         id: \d+

@@ -23,8 +23,8 @@ use Doctrine\ORM\EntityRepository;
 class PostRepository extends EntityRepository
 {
     /**
-     *
-     *
+     * 
+     * @return type
      */
     public function getPosts()
     {
@@ -35,5 +35,20 @@ class PostRepository extends EntityRepository
                                      ORDER BY p.created_at DESC, p.id DESC
                                    ");
         return $query->getResult();
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getPost($id)
+    {
+        $query = $this->_em
+                      ->createQuery("SELECT p
+                                     FROM MZJ\YabBundle\Entity\Post p
+                                     WHERE p.id = :id
+                                   ");
+        $query->setParameter('id', $id);
+        return $query->getSingleResult();
     }
 }

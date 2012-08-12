@@ -1,0 +1,50 @@
+<h2>Comments:</h2>
+{# Threaded comment system #}
+
+{% set pastLevel = -1 %}
+
+{% for key, comment in comments %}
+    
+    {% if comment.lvl < pastLevel %}
+        {{ '</article>'|repeat( pastLevel - comment.lvl)|raw }} 
+    {% endif %}
+
+    <article class="comment">
+        
+        {% include 'MZJYabBundle:Comment:comment.html.twig' with {'comment': comment, 'loop': loop } %}
+
+        
+        {% if comment.rgt - comment.lft == 1 %} </article> {% endif %}
+
+        {% set pastLevel = comment.lvl %}
+
+        {% if loop.last == true %}
+            {{ '</article>'|repeat(pastLevel)|raw }} 
+        {% endif %}
+
+
+{% else %}
+      No comments 
+{% endfor %}
+            
+<div class="comment-form-wrapper">
+    <form action="{{ path('comment_create', {'postId': postId}) }}" method="post"  id="comment-form">
+        {{ form_errors(form) }}
+
+        <fieldset>
+            <legend> Leave a Comment </legend>
+            <div>{{ form_label(form.name) }}
+            {{ form_errors(form.name) }}
+            {{ form_widget(form.name) }}</div>
+
+            <div>{{ form_label(form.content) }}
+            {{ form_errors(form.content) }}
+            {{ form_widget(form.content) }}</div>
+
+            {{ form_rest(form) }}
+            
+            <p><input type="submit" value="Comment" class="comment-btn"/></p>
+        </fieldset>
+            
+    </form>
+</div>

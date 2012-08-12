@@ -28,7 +28,7 @@ class CommentFixtures extends AbstractFixture implements OrderedFixtureInterface
         
         $comm2 = new Comment();
         $comm2->setName('Nikola');
-        $comm2->setContent('@Marko - Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+        $comm2->setContent('Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam,<script>alert("hello")</script> quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                 );
@@ -40,7 +40,7 @@ class CommentFixtures extends AbstractFixture implements OrderedFixtureInterface
                 
         $comm3 = new Comment();
         $comm3->setName('Mirko');
-        $comm3->setContent(' Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+        $comm3->setContent('Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                 );
@@ -51,7 +51,7 @@ class CommentFixtures extends AbstractFixture implements OrderedFixtureInterface
         
         $comm4 = new Comment();
         $comm4->setName('Marko');
-        $comm4->setContent('@Nikola - Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+        $comm4->setContent('Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                 );
@@ -63,7 +63,7 @@ class CommentFixtures extends AbstractFixture implements OrderedFixtureInterface
         
         $comm5 = new Comment();
         $comm5->setName('Amy');
-        $comm5->setContent('@Marko - Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+        $comm5->setContent('Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
                 );

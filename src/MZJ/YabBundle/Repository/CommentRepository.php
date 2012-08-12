@@ -29,10 +29,12 @@ class CommentRepository extends NestedTreeRepository
     public function getAsArray($postId) 
     {
         $q = $this->_em->createQueryBuilder()
-                        ->select('node')
+                        ->select('node', 'parent')
                         ->from('MZJ\YabBundle\Entity\Comment', 'node')
                         ->join('node.post', 'post')
-                        ->orderBy('node.root, node.lft', 'ASC')
+                        ->leftJoin('node.parent', 'parent')
+                        ->addOrderBy('node.root', 'DESC')
+                        ->addOrderBy('node.lft', 'ASC')
                         ->where('post.id = :pid')
                         ->getQuery();
         $q->setParameter('pid', $postId);

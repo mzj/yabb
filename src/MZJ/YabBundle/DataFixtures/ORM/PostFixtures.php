@@ -43,6 +43,27 @@ class PostFixtures extends AbstractFixture implements OrderedFixtureInterface, C
 
 EOT;
     
+    public $code2 = <<<'EOT'
+        <pre><code>
+namespace MZJ\YabBundle\DependencyInjection\Compiler;
+
+
+
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface,
+    Symfony\Component\DependencyInjection\ContainerBuilder;
+
+class CompilerPass implements CompilerPassInterface
+{
+    public function process(ContainerBuilder $container)
+    {
+        $definition = $container->getDefinition('fpn_tag.tag_manager');
+        $definition->setClass('MZJ\YabBundle\Entity\TagManager');
+    }
+}
+        </code></pre>
+
+EOT;
+    
     /**
      * @var ContainerInterface
      */
@@ -132,17 +153,28 @@ EOT;
         $post5->addCategorie($manager->merge($this->getReference('tutorials')));
         $post5->setCommentsEnabled(true);
         
+        $post6 = new Post();
+        $post6->setTitle('FPN TagBundle - Overriding Service Class');
+        $post6->setAbstract("Problem came up. TagManager from Fpn TagBundle used doctrine dql, that didn't do the 'real' join. So I needed a way to override a method from TagManager class.
+                    So I found a way how to override 'foreign' service definitions from inside my bundle. Using Compiler pass, I now have my own TagManager class that extends original one, and overrides tha troublesome method.");
+        $post6->setContent("The Compiler 'registration' class: " . $this->code2);
+        $post6->addCategorie($manager->merge($this->getReference('symfony2')));
+        $post6->addCategorie($manager->merge($this->getReference('tutorials')));
+        $post6->setCommentsEnabled(true);
+        
         $tagManager->addTags($tags, $post1);
         $tagManager->addTags(array_slice($tags, 2, -1), $post2);
         $tagManager->addTags(array_slice($tags, 1, -2), $post3);
         $tagManager->addTags(array_slice($tags, 2), $post4);
         $tagManager->addTags(array_slice($tags, 2), $post5);
+        $tagManager->addTags(array_slice($tags, 2), $post6);
         
         $manager->persist($post1);
         $manager->persist($post2);
         $manager->persist($post3);
         $manager->persist($post4);
         $manager->persist($post5);
+        $manager->persist($post6);
         
         $manager->flush();
         
@@ -151,12 +183,14 @@ EOT;
         $tagManager->saveTagging($post3);
         $tagManager->saveTagging($post4);
         $tagManager->saveTagging($post5);
+        $tagManager->saveTagging($post6);
         
         $this->addReference('post1',   $post1);
         $this->addReference('post2',   $post2);
         $this->addReference('post3',   $post3);
         $this->addReference('post4',   $post4);
         $this->addReference('post5',   $post5);
+        $this->addReference('post6',   $post6);
     }
     
     /**

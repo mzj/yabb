@@ -57,6 +57,15 @@
    padding: 0px;
 }
 
+::selection {
+	background: #ffb7b7;
+        color: black;
+}
+::-moz-selection {
+	background: #ffb7b7;
+        color: black;
+}
+
 body {
     background: #FCFCFC;
 }
@@ -143,7 +152,7 @@ header h1 a {
 #posts-list h2 {
     font-family: 'Georgia';
     font-weight: normal;
-    font-size: 1.4em;
+    font-size: 1.3em;
     display: inline;
     margin-left: -15px;
 }
@@ -158,7 +167,7 @@ header h1 a {
 }
 
 #posts-list time {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 #posts-list time .day { color: #666; }
@@ -340,27 +349,44 @@ code {
     font-size: 13px;
     margin-top: 20px;
     line-height:17px;
+    border-radius: 3px;
 }
 
 #comments article article {
-    padding-left: 45px;
+    padding-left: 30px;
     margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 #comments article article article {
-    padding-left: 45px;
+    padding-left: 30px;
+    margin-bottom: 5px;
 }
 
 #comments article article article article {
-    padding-left: 45px;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+
+.comment p {
+    padding: 5px;
 }
 
 
 .comment .info {
-    margin-top: 5px;
+    padding-top: 5px;
+    font-size: 12px;
 }
 
 .comment .info .username {
+    font-weight: bold;
+}
+
+.comment .info .created {
+    margin-left: 10px;
+}
+
+.comment .info .when {
     font-weight: bold;
 }
 
@@ -369,10 +395,8 @@ code {
 }
 
 .comment .rating {
-    float: right;
-    font-size: 12px;
+    font-size: 11px;
     text-align: right;
-    width: 100%;
 }
 
 .comment .reply {
@@ -384,10 +408,14 @@ code {
     color: #666;
 }
 
+.comment .score {
+    margin-left: 10px;
+}
+
 
 
 .comment .rating .like { color: #6EB8F1; }
-.comment .rating .dislike { color: #F74A92; margin-left: 10px; }
+.comment .rating .dislike { color: #F74A92; margin-left: 3px; }
 .comment .rating .like .plus a {   color: #6EB8F1; text-decoration: none; }
 .comment .rating .dislike .minus a { color: #F74A92; text-decoration: none; }
 
@@ -436,6 +464,20 @@ code {
     padding: 5px;
     background: #FFF;
     border: 1px solid rgba(0, 0, 0, 0.4);
+    color: #666;
+    font-family: 'Georgia';
+}
+
+.comment-wrapper {
+    background-color: #F9F9F9;
+}
+
+.comment .odd {
+    background-color: #F6F6F6;
+}
+
+#post .tags {
+    margin-top: 10px;
     color: #666;
     font-family: 'Georgia';
 }

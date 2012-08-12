@@ -51,7 +51,7 @@ class PostController extends Controller
         $em = $this->getDoctrine()->getManager();
         $tagManager = $this->get('fpn_tag.tag_manager');
         
-        $entity = $em->getRepository('MZJYabBundle:Post')->find($id);
+        $entity = $em->getRepository('MZJYabBundle:Post')->getPost($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Post entity.');

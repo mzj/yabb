@@ -33,7 +33,7 @@ class CommentController extends Controller
      * Finds and displays a Post entity.
      *
      */
-    public function listAction($postId)
+    public function commentsAction($postId)
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository('MZJYabBundle:Comment');
@@ -43,7 +43,7 @@ class CommentController extends Controller
         $entity = new Comment();
         $form   = $this->createForm(new CommentType(), $entity);
         
-        return $this->render('MZJYabBundle:Comment:list.html.twig', array(
+        return $this->render('MZJYabBundle:Comment:comments.html.twig', array(
             'comments'  => $comments,
             'form'      => $form->createView(),
             'postId'    => $postId
@@ -108,7 +108,9 @@ class CommentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('comment_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('MZJYabBundle_post_view', 
+                    array('id' => $post->getId(), 'slug' => $post->getSlug())
+                 ));
         }
 
         return $this->render('MZJYabBundle:Comment:new.html.twig', array(
@@ -219,7 +221,7 @@ class CommentController extends Controller
         $em->flush();
         
         return $this->redirect($this->generateUrl('MZJYabBundle_post_view', 
-                array('created' => '06-10-1988', 'id' => $post->getId(), 'slug' => $post->getSlug())
+                array('id' => $post->getId(), 'slug' => $post->getSlug())
              ));
     }
     
@@ -245,7 +247,7 @@ class CommentController extends Controller
         $em->flush();
         
         return $this->redirect($this->generateUrl('MZJYabBundle_post_view', 
-                array('created' => '06-10-1988', 'id' => $post->getId(), 'slug' => $post->getSlug())
+                array('id' => $post->getId(), 'slug' => $post->getSlug())
              ));
     }
     

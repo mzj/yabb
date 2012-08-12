@@ -1,0 +1,36 @@
+<div class="comment-wrapper {% if loop.index is odd %}odd{% endif %}">
+
+    <p> 
+       {% if comment.parent != false %} 
+            <strong>@{{ comment.parent.name }}</strong> 
+       {% endif %} 
+       {{ comment.content }}
+    </p>
+
+    <p class="info"> 
+
+        <span class="name">By: <span class="username">{{ comment.name }}</span></span>
+        <span class="created">When: <span class="when">{{ comment.created_at|date('m/d/Y H:i:s') }}</span></span>
+        
+        <span class="rating">
+            <span class="score">Score: </span>
+            <span class="like">
+                {{ comment.likes }} 
+                <span class="plus">
+                    <a href="{{ path('comment_like', { 'id': comment.id }) }}">{+}</a>
+                </span>
+            </span>
+            <span class="dislike">
+               {{ comment.dislikes }} 
+               <span class="minus">
+                   <a href="{{ path('comment_dislike', { 'id': comment.id }) }}">{-}</a>
+               </span>
+            </span>
+        </span>
+        
+        <span class="reply"><a href="#comment-form" class="{{ comment.id }}">Reply &#8594;</a></span>
+
+
+        <br class="clear">
+    </p>
+</div>
