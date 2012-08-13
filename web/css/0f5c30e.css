@@ -376,6 +376,9 @@ code {
 .comment .info {
     padding-top: 5px;
     font-size: 12px;
+    position: absolute;
+    bottom: 0px;
+    width: 97%;
 }
 
 .comment .info .username {
@@ -469,11 +472,14 @@ code {
 }
 
 .comment-wrapper {
-    background-color: #F9F9F9;
+    background-color: #F4F4F4;
+    min-height: 80px;
+    position: relative;
+    padding-top: 10px;
 }
 
 .comment .odd {
-    background-color: #F6F6F6;
+    background-color: #EDEDED;
 }
 
 #post .tags {
