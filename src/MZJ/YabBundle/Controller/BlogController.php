@@ -42,11 +42,15 @@ class BlogController extends Controller
     }
     
     /**
-     * Sidebar
-     *
+     * Sidebar action
+     * Note: Sidebar is cached 
      */
     public function sidebarAction()
     {
-        return $this->render('MZJYabBundle:Blog:sidebar.html.twig');
+        $response = $this->render('MZJYabBundle:Blog:sidebar.html.twig');
+        
+        $response->setSharedMaxAge(60);
+        
+        return $response;
     }
 }

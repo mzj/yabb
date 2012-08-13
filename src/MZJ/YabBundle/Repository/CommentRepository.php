@@ -38,6 +38,9 @@ class CommentRepository extends NestedTreeRepository
                         ->where('post.id = :pid')
                         ->getQuery();
         $q->setParameter('pid', $postId);
+        
+        $q->useResultCache(true, 30);
+        
         $comments = $q->getArrayResult();
         
         return $comments;        

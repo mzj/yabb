@@ -12,17 +12,21 @@ class TagManager extends BaseTagManager
     protected function getTagging(\DoctrineExtensions\Taggable\Taggable $resource)
     {
         return $this->em
-            ->createQueryBuilder()
+                    ->createQueryBuilder()
 
-            ->select('t, t2')
-            ->from($this->tagClass, 't')
+                    ->select('t, t2')
+                    ->from($this->tagClass, 't')
 
-            ->innerJoin('t.tagging', 't2', Expr\Join::WITH, 't2.resourceId = :id AND t2.resourceType = :type')
-            ->setParameter('id', $resource->getTaggableId())
-            ->setParameter('type', $resource->getTaggableType())
-
-            ->getQuery()
-            ->getResult()
+                    ->innerJoin('t.tagging', 't2', Expr\Join::WITH, 't2.resourceId = :id AND t2.resourceType = :type')
+            
+                    ->setParameter('id', $resource->getTaggableId())
+                    ->setParameter('type', $resource->getTaggableType())
+            
+                    ->getQuery()
+             
+                    ->useResultCache(true, 30)
+                    
+                    ->getResult();
         ;
     }
 }

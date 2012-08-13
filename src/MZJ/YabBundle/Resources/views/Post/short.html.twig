@@ -1,7 +1,7 @@
 <article class="short-post">
     
     <h2>
-        <a href="{{ path('MZJYabBundle_post_view', { 'created': post.createdAt|date("m-d-Y"), 'id': post.id, 'slug': post.slug }) }}">
+        <a href="{{ path('MZJYabBundle_post_view', { 'id': post.id, 'slug': post.slug }) }}">
             {{ post.title }}
         </a>   
     </h2>

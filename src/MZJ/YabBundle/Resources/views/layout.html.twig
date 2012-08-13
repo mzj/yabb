@@ -46,7 +46,7 @@
         
       
             {% block sidebar %}
-                {% render "MZJYabBundle:Blog:sidebar" %}
+                {% render "MZJYabBundle:Blog:sidebar" with {}, {'standalone': true} %}
             {% endblock sidebar %}
     <!-- end #container -->        
     <div>

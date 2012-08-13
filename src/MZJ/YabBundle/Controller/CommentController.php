@@ -100,11 +100,13 @@ class CommentController extends Controller
             $em = $this->getDoctrine()->getManager();
             
             $post = $em->getRepository('MZJYabBundle:Post')->find($postId);
-            $comment = $em->getRepository('MZJYabBundle:Comment')->find($commentId);
-            
             $entity->setPost($post);
-            $entity->setParent($comment);
             
+            if(null != $commentId) {
+                $comment = $em->getRepository('MZJYabBundle:Comment')->find($commentId);
+                $entity->setParent($comment);
+            }
+                        
             $em->persist($entity);
             $em->flush();
 

@@ -12,7 +12,7 @@ comment_new:
 
 comment_create:
     pattern:  /create/{postId}/{commentId}
-    defaults: { _controller: "MZJYabBundle:Comment:create", commentId: 1 }
+    defaults: { _controller: "MZJYabBundle:Comment:create", commentId: null }
     requirements: { _method: post }
 
 comment_edit:
