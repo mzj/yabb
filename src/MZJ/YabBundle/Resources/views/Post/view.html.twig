@@ -1,5 +1,28 @@
 {% extends 'MZJYabBundle::layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('bundles/mzjyab/js/vendor/tag-it/css/jquery.tagit.css') }}" type="text/css" media="screen" />
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+     {% javascripts 'bundles/mzjyab/js/vendor/tag-it/js/tag-it.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#mzj_yabbundle_posttype_tags").tagit();
+            });
+        </script>
+{% endblock javascripts %}
+
+
+
+
 {% block title %}
     {{ post.title }} - Yab
 {% endblock %}

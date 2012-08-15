@@ -2,7 +2,9 @@
     <h2>Tag Cloud</h2>
     <ul>
         {% for tag, count in tags %}
-            <li class="cloud-count-{{ count }}">{{ tag }} </li>
+            <li class="cloud-count-{{ count }}">
+                <a href="{{ path('MZJYabBundle_posts_by_tag', {'tag': tag}) }}">{{ tag }}</a> 
+            </li>
         {% endfor %}
     </ul>
 </nav>

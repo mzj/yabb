@@ -51,4 +51,41 @@ class PostRepository extends EntityRepository
         $query->setParameter('id', $id);
         return $query->getSingleResult();
     }
+    
+    /**
+     * 
+     * @param type $category
+     */
+    public function getPostsInCategory($category) 
+    {
+        $left  = $category->getLft();
+        $right = $category->getRgt();
+        
+        $query = $this->_em->createQuery("SELECT p, c 
+                                          FROM MZJ\YabBundle\Entity\Post p
+                                          JOIN p.categories c
+                                          WHERE c.lft BETWEEN ?1 AND ?2");
+        $query->setParameters(array(
+                1 => $left,
+                2 => $right
+            ));
+        
+        return $query->getResult();
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getPostsWithIds(array $ids)
+    {
+        $query = $this->_em
+                      ->createQuery("SELECT p
+                                     FROM MZJ\YabBundle\Entity\Post p
+                                     WHERE p.id IN (:ids)
+                                   ");
+        $query->setParameter('ids', $ids);
+        
+        return $query->getResult();
+    }
 }

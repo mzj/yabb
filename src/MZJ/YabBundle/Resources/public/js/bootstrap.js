@@ -4,6 +4,8 @@
  */
 $(document).ready(function(){
     
+    var oldAction = $('#comment-form').attr("action");
+    
     hljs.initHighlightingOnLoad();
     
     $('#coolness div').hover(function(){
@@ -14,7 +16,7 @@ $(document).ready(function(){
     
     
     $(".reply a").click(function() {
-        var oldAction = $('#comment-form').attr("action");
+        
         var add = this.className;
         var action = oldAction + '/' + add;
         $("#comment-form").attr("action", action);

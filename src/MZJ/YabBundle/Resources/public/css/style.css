@@ -269,7 +269,10 @@ header h1 a {
 #cloud li {
     list-style: none;
     display: inline-block;
-    color: #27B9DE;
+}
+
+#cloud ul li a {
+   color: #27B9DE; 
 }
 
 .cloud-count-1 {

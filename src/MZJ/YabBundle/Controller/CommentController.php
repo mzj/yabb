@@ -1,16 +1,27 @@
 <?php
 
+/*
+ * This file is part of the Yabb package.
+ *
+ * (c) Marko Jovanovic <markozjovanovic@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace MZJ\YabBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-use MZJ\YabBundle\Entity\Comment;
-use MZJ\YabBundle\Form\CommentType;
+use Symfony\Component\HttpFoundation\Request,
+    Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    MZJ\YabBundle\Entity\Comment,
+    MZJ\YabBundle\Form\CommentType;
 
 /**
- * Comment controller.
+ * MZJ\YabBundle\Controller\CommentController
  *
+ * Comment controller
+ *
+ * @author Marko Jovanovic <markozjovanovic@gmail.com>
  */
 class CommentController extends Controller
 {

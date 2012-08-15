@@ -11,12 +11,10 @@
 
 namespace MZJ\YabBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-use MZJ\YabBundle\Entity\Post;
-use MZJ\YabBundle\Entity\Tag;
-use MZJ\YabBundle\Form\PostType;
+use Symfony\Component\HttpFoundation\Request,
+    Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    MZJ\YabBundle\Entity\Post,
+    MZJ\YabBundle\Form\PostType;
 
 /**
  * MZJ\YabBundle\Controller\PostController
@@ -219,6 +217,50 @@ class PostController extends Controller
         return $this->redirect($this->generateUrl('post'));
     }
 
+    /**
+     * Lists all Post entities.
+     *
+     */
+    public function inCategoryAction($id, $slug)
+    {
+        $em = $this->getDoctrine()
+                   ->getEntityManager();
+         
+        $repo = $em->getRepository('MZJYabBundle:Category');
+        $category = $repo->find($id);
+        $posts = $em->getRepository('MZJYabBundle:Post')->getPostsInCategory($category);
+
+        return $this->render('MZJYabBundle:Post:inCategory.html.twig', array(
+            'entities' => $posts,
+        ));
+    }
+    
+    /**
+     * Lists all Post entities.
+     *
+     */
+    public function withTagAction($tag)
+    {
+        $em = $this->getDoctrine()
+                   ->getEntityManager();
+         
+        $ids = $em->getRepository('MZJYabBundle:Tag')->getResourceIdsForTag('post_tag', $tag);
+        $posts = null;
+        
+        if(!empty($ids)) {
+            $posts = $em->getRepository('MZJYabBundle:Post')->getPostsWithIds($ids);
+        }
+
+        return $this->render('MZJYabBundle:Post:withTag.html.twig', array(
+            'entities' => $posts,
+        ));
+    }
+    
+    /**
+     * 
+     * @param type $id
+     * @return type
+     */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))

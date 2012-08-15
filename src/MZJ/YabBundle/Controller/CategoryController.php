@@ -1,16 +1,27 @@
 <?php
 
+/*
+ * This file is part of the Yabb package.
+ *
+ * (c) Marko Jovanovic <markozjovanovic@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace MZJ\YabBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-use MZJ\YabBundle\Entity\Category;
-use MZJ\YabBundle\Form\CategoryType;
+use Symfony\Component\HttpFoundation\Request,
+    Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    MZJ\YabBundle\Entity\Category,
+    MZJ\YabBundle\Form\CategoryType;
 
 /**
- * Category controller.
+ * MZJ\YabBundle\Controller\CategoryController
  *
+ * Category controller
+ *
+ * @author Marko Jovanovic <markozjovanovic@gmail.com>
  */
 class CategoryController extends Controller
 {
@@ -29,6 +40,10 @@ class CategoryController extends Controller
         ));
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function listAction()
     {
         $em = $this->getDoctrine()
@@ -42,7 +57,7 @@ class CategoryController extends Controller
          */
         $categories = $repo->buildTree($categories, array('decorate' => true, 
                     'nodeDecorator' => function($node) use ($helper) {
-                        return '<a href="' . $helper->generateUrl('category', 
+                        return '<a href="' . $helper->generateUrl('MZJYabBundle_posts_by_category', 
                                 array('id' => $node['id'],'slug' => $node['slug'])) 
                                 . '">' 
                                 . str_repeat(': ', $node['lvl'] - 1)
@@ -214,6 +229,11 @@ class CategoryController extends Controller
         return $this->redirect($this->generateUrl('category'));
     }
 
+    /**
+     * 
+     * @param type $id
+     * @return type
+     */
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(array('id' => $id))

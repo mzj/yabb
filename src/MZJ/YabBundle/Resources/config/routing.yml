@@ -1,7 +1,9 @@
+# Homepage - Lists all posts
 MZJYabBundle_home:
     pattern:  /
     defaults: { _controller: MZJYabBundle:Blog:index }
 
+# Post view
 MZJYabBundle_post_view:
     pattern:  /{id}/{slug}
     defaults: { _controller: "MZJYabBundle:Post:view" }
@@ -9,15 +11,33 @@ MZJYabBundle_post_view:
         _method:  GET
         id: \d+
         
-MZJYabBundle_comments:
-    pattern:  /comment/{postId)
-    defaults: { _controller: "MZJYabBundle:Comment:comments" }
+# Lists posts under category     
+MZJYabBundle_posts_by_category:
+    pattern:  /category/{id}/{slug}
+    defaults: { _controller: "MZJYabBundle:Post:inCategory" }
     requirements:
         _method:  GET
         id: \d+
         
-                
-# Includes         
+# Lists posts with specified tag       
+MZJYabBundle_posts_by_tag:
+    pattern:  /tag/{tag}
+    defaults: { _controller: "MZJYabBundle:Post:withTag" }
+    requirements:
+        _method:  GET
+ 
+# Classic search        
+MZJYabBundle_posts_by_term:
+    pattern:  /search/{term}
+    defaults: { _controller: "MZJYabBundle:Blog:search" }
+    requirements:
+        _method:  GET
+        id: \d+
+        
+        
+################################    
+#   Includes                   #
+################################
 MZJYabBundle_post:
     resource: "@MZJYabBundle/Resources/config/routing/post.yml"
     prefix:   /post

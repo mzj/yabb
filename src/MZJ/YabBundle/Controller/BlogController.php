@@ -11,11 +11,7 @@
 
 namespace MZJ\YabBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-use MZJ\YabBundle\Entity\Post;
-use MZJ\YabBundle\Form\PostType;
 
 /**
  * MZJ\YabBundle\Controller\BlogController
