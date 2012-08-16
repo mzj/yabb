@@ -7,8 +7,15 @@ services:
         class: MZJ\YabBundle\Twig\Extension\RepeatExtension
         tags:
             - { name: twig.extension }
-   
-    fpn_tag.tag_manager:
-        class: FPN\TagBundle\Entity\TagManager2
+            
+            
+    my_logging_pointcut:
+        class: MZJ\YabBundle\Service\LoggingPointcut
+        arguments: ["@annotation_reader"]
         tags:
-            - { name: fpn_tag.tag_manager }
+            - { name: jms_aop.pointcut, interceptor: logging_interceptor }
+            
+ 
+    logging_interceptor:
+        class: MZJ\YabBundle\Interceptor\LoggingInterceptor
+        arguments: ["@security.context", "@logger"]

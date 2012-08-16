@@ -12,7 +12,7 @@
 namespace MZJ\YabBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use MZJ\YabBundle\Annotation;
 /**
  * MZJ\YabBundle\Controller\BlogController
  *
@@ -48,5 +48,19 @@ class BlogController extends Controller
         $response->setSharedMaxAge(60);
         
         return $response;
+    }
+    
+    
+    /**
+     * 
+     * @Annotation\Transactional
+     */
+    public function testDeleteAction() 
+    {
+        $response = $this->render('MZJYabBundle:Blog:sidebar.html.twig');
+        
+        
+        return $response;
+        
     }
 }

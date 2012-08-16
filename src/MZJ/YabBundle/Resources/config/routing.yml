@@ -34,6 +34,13 @@ MZJYabBundle_posts_by_term:
         _method:  GET
         id: \d+
         
+# Classic sfsdfsdf        
+MZJYabBundle_delete_tesrt:
+    pattern:  /test/delete/{name}
+    defaults: { _controller: "MZJYabBundle:Blog:testDelete" }
+    requirements:
+        _method:  GET
+        
         
 ################################    
 #   Includes                   #
