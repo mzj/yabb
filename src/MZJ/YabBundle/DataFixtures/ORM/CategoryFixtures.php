@@ -1,5 +1,13 @@
 <?php
-// src/MZJ/YabBundle/DataFixtures/ORM/CategoryFixtures.php
+
+/*
+ * This file is part of the Yabb package.
+ *
+ * (c) Marko Jovanovic <markozjovanovic@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace MZJ\YabBundle\DataFixtures\ORM;
 
@@ -8,8 +16,20 @@ use Doctrine\Common\DataFixtures\AbstractFixture,
     Doctrine\Common\Persistence\ObjectManager,
     MZJ\YabBundle\Entity\Category;
 
+/**
+ * MZJ\YabBundle\DataFixtures\ORM\CategoryFixtures
+ *
+ * Category Fixture class
+ *
+ * @author Marko Jovanovic <markozjovanovic@gmail.com>
+ */
 class CategoryFixtures extends AbstractFixture implements OrderedFixtureInterface
-{
+{    
+    /**
+     * Main method that actually does the work
+     * 
+     * @param \Doctrine\Common\Persistence\ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         $cat1 = new Category();

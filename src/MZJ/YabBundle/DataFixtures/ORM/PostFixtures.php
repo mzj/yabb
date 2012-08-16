@@ -1,5 +1,13 @@
 <?php
-// src/MZJ/YabBundle/DataFixtures/ORM/CategoryFixtures.php
+
+/*
+ * This file is part of the Yabb package.
+ *
+ * (c) Marko Jovanovic <markozjovanovic@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace MZJ\YabBundle\DataFixtures\ORM;
 
@@ -10,8 +18,20 @@ use Doctrine\Common\DataFixtures\AbstractFixture,
     Symfony\Component\DependencyInjection\ContainerInterface,
     MZJ\YabBundle\Entity\Post;
 
+/**
+ * MZJ\YabBundle\DataFixtures\ORM\PostFixtures
+ *
+ * Post Fixture class
+ *
+ * @author Marko Jovanovic <markozjovanovic@gmail.com>
+ */
 class PostFixtures extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
-{    
+{   
+    /**
+     * Holds dummy code as part of the text that goes into post
+     * 
+     * @var string 
+     */
     public $code = <<<'EOT'
         <pre><code>
         class CartController extends Controller
@@ -40,37 +60,40 @@ class PostFixtures extends AbstractFixture implements OrderedFixtureInterface, C
             }
         }
         </code></pre>
-
-EOT;
-    
-    public $code2 = <<<'EOT'
-        <pre><code>
-namespace MZJ\YabBundle\DependencyInjection\Compiler;
-
-
-
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface,
-    Symfony\Component\DependencyInjection\ContainerBuilder;
-
-class CompilerPass implements CompilerPassInterface
-{
-    public function process(ContainerBuilder $container)
-    {
-        $definition = $container->getDefinition('fpn_tag.tag_manager');
-        $definition->setClass('MZJ\YabBundle\Entity\TagManager');
-    }
-}
-        </code></pre>
-
 EOT;
     
     /**
-     * @var ContainerInterface
+     * Holds dummy code as part of the text that goes into post
+     * 
+     * @var string 
+     */
+    public $code2 = <<<'EOT'
+        <pre><code>
+        namespace MZJ\YabBundle\DependencyInjection\Compiler;
+
+
+
+        use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface,
+            Symfony\Component\DependencyInjection\ContainerBuilder;
+
+        class CompilerPass implements CompilerPassInterface
+        {
+            public function process(ContainerBuilder $container)
+            {
+                $definition = $container->getDefinition('fpn_tag.tag_manager');
+                $definition->setClass('MZJ\YabBundle\Entity\TagManager');
+            }
+        }
+        </code></pre>
+EOT;
+    
+    /**
+     * @var \Symfony\Component\DependencyInjection\ContainerInterface
      */
     private $container;
     
     /**
-     * {@inheritDoc}
+     * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
      */
     public function setContainer(ContainerInterface $container = null)
     {
@@ -78,6 +101,7 @@ EOT;
     }
     
     /**
+     * Main method that actually does the work
      * 
      * @param \Doctrine\Common\Persistence\ObjectManager $manager
      */

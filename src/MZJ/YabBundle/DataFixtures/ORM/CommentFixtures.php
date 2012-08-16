@@ -1,5 +1,13 @@
 <?php
-// src/MZJ/YabBundle/DataFixtures/ORM/CategoryFixtures.php
+
+/*
+ * This file is part of the Yabb package.
+ *
+ * (c) Marko Jovanovic <markozjovanovic@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace MZJ\YabBundle\DataFixtures\ORM;
 
@@ -8,9 +16,17 @@ use Doctrine\Common\DataFixtures\AbstractFixture,
     Doctrine\Common\Persistence\ObjectManager,
     MZJ\YabBundle\Entity\Comment;
 
+/**
+ * MZJ\YabBundle\DataFixtures\ORM\CommentFixtures
+ *
+ * Comment Fixture class
+ *
+ * @author Marko Jovanovic <markozjovanovic@gmail.com>
+ */
 class CommentFixtures extends AbstractFixture implements OrderedFixtureInterface
 { 
     /**
+     * Main method that actually does the work
      * 
      * @param \Doctrine\Common\Persistence\ObjectManager $manager
      */
